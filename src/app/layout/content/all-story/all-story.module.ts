@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AllStoryComponent } from './all-story.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AllStoryComponent
+  ],
   imports: [
     CommonModule
   ]
 })
-export class LayoutModule { }
+export class AllStoryModule { }

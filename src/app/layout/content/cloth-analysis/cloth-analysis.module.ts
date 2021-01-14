@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClothAnalysisComponent } from './cloth-analysis.component';
 
-
-
 @NgModule({
-  declarations: [ClothAnalysisComponent],
+  declarations: [
+    ClothAnalysisComponent
+  ],
   imports: [
     CommonModule
   ]
