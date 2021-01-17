@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AddSvgIconService } from '../../core/add-svg-icon.service';
 
 @Component({
   selector: 'cpc-navigation',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private addSvgIconService: AddSvgIconService,
+  ) { }
 
   ngOnInit(): void {
+    this.addSvgIconService.addSvgIcon('logo');
   }
 
 }

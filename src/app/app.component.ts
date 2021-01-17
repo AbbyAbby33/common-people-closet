@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.addSvgIconService.addSvgIcon('face_home');
-    this.addSvgIconService.addSvgIcon('logo');
   }
 
 }

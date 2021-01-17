@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../../shared/shared.module';
+
 import { ShareYoursComponent } from './share-yours.component';
 
 @NgModule({
@@ -7,7 +8,7 @@ import { ShareYoursComponent } from './share-yours.component';
     ShareYoursComponent
   ],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
 export class ShareYoursModule { }

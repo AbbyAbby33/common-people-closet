@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../../shared/shared.module';
 import { AllStoryComponent } from './all-story.component';
 
 @NgModule({
@@ -7,7 +7,7 @@ import { AllStoryComponent } from './all-story.component';
     AllStoryComponent
   ],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
 export class AllStoryModule { }
