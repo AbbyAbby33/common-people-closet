@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AddSvgIconService } from '@core/add-svg-icon.service';
+import { AddSvgIconService } from '@core/service/add-svg-icon.service';
 
 @Component({
   selector: 'cpc-layout',
