@@ -8,6 +8,9 @@ import { AddSvgIconService } from '../../core/add-svg-icon.service';
 })
 export class NavigationComponent implements OnInit {
 
+  /*菜單資料*/
+  navList;
+
   constructor(
     private addSvgIconService: AddSvgIconService,
   ) { }

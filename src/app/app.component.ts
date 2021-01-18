@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AddSvgIconService } from './core/add-svg-icon.service';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +7,8 @@ import { AddSvgIconService } from './core/add-svg-icon.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(
-    private addSvgIconService: AddSvgIconService,
-  ) {}
+  constructor() {}
 
-  ngOnInit() {
-    this.addSvgIconService.addSvgIcon('face_home');
-  }
+  ngOnInit() {}
 
 }
