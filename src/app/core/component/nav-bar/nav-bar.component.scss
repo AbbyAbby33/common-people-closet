@@ -1,23 +1,32 @@
-@import '../../../../assets/style/_var.scss';
+@import "../../../../assets/style/_var.scss";
 
 .navigation-wrap {
   text-align: center;
+  background-color: $color_two;
   li {
     display: inline-block;
     line-height: 50px;
     font-size: 20px;
-    span.nav-icon {
-      background-color: $color_one;
-      display: inline-block;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      vertical-align: bottom;
-      mat-icon {
-        width: 40px;
-        height: 40px;
-        color: black;
-        vertical-align: bottom;
+    a {
+      text-decoration: none;
+      span {
+        margin: 8px 16px;
+        color: $color_word;
+      }
+      span.nav-icon {
+        background-color: $color_one;
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        // 希望icon對齊中間
+        vertical-align: middle;
+        mat-icon {
+          width: 40px;
+          height: 40px;
+          color: black;
+          vertical-align: bottom;
+        }
       }
     }
   }
