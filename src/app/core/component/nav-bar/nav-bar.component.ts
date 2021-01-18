@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AddSvgIconService } from '@core/service/add-svg-icon.service';
+import { AddSvgIconService } from '@app/core/service-front/add-svg-icon.service';
 
 @Component({
   selector: 'cpc-nav-bar',
