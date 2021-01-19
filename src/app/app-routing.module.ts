@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from '@layout/home/home.component';
 
 const routes: Routes = [
   {
@@ -22,11 +23,11 @@ const routes: Routes = [
     path: 'share-yours',
     loadChildren: () => import('./layout/share-yours/share-yours.module').then(m => m.ShareYoursModule),
   },
-  // {
-  //   // 首頁
-  //   path: '',
-  //   loadChildren: () => import('./layout/home/home.module').then(m => m.HomeModule),
-  // },
+  {
+    // 首頁
+    path: '',
+    component: HomeComponent,
+  },
   // {
   //   // 暫時404頁面也都導回首頁
   //   path: '**',
