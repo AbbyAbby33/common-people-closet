@@ -1,7 +1,9 @@
 <section class="navigation-wrap">
   <ul>
     <li *ngFor="let navItem of navList">
-      <a [href]="navItem.path">
+      <!-- <a [href]="navItem.path"> -->
+      <!-- <a routerLink="/all-story" routerLinkActive="active"> -->
+      <a [routerLink]="navItem.path" routerLinkActive="active">
         <span *ngIf="navItem.type === 'word'">
           {{ navItem.name }}
         </span>

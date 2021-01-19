@@ -7,11 +7,11 @@ export class NavService {
 
   /** 菜單 */
   navList = [
-    {name: '詳細故事', type: 'word', path: 'https://www.w3schools.com'},
-    {name: '衣物分析', type: 'word', path: 'https://www.w3schools.com'},
-    {name: 'logo', type: 'icon', path: 'https://www.w3schools.com'},
-    {name: '隨機搭配', type: 'word', path: 'https://www.w3schools.com'},
-    {name: '投稿故事', type: 'word', path: 'https://www.w3schools.com'},
+    {name: '詳細故事', type: 'word', path: '/all-story'},
+    {name: '衣物分析', type: 'word', path: '/cloth-analysis'},
+    {name: 'logo', type: 'icon', path: ''},
+    {name: '隨機搭配', type: 'word', path: '/random-match'},
+    {name: '投稿故事', type: 'word', path: '/share-yours'},
   ];
 
   constructor() { }
