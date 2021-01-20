@@ -8,6 +8,9 @@ import { HomeComponent } from './home.component';
   ],
   imports: [
     SharedModule
+  ],
+  providers: [
+
   ]
 })
 export class HomeModule { }

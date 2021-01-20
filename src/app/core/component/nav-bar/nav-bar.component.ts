@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AddSvgIconService } from '@app/core/service-front/add-svg-icon.service';
-import { NavService } from '@core/service-api/nav.service';
+import { NavApiService } from '@app/core/service-api/nav-api.service';
 
 @Component({
   selector: 'cpc-nav-bar',
@@ -14,7 +14,7 @@ export class NavBarComponent implements OnInit {
 
   constructor(
     private addSvgIconService: AddSvgIconService,
-    private navService: NavService,
+    private navApiService: NavApiService,
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +22,7 @@ export class NavBarComponent implements OnInit {
   }
 
   getNavList() {
-    this.navList = this.navService.getNavList();
+    this.navList = this.navApiService.getNavList();
     // console.log(this.navList, 'this.navList');
 
     this.navList.forEach(navItem => {

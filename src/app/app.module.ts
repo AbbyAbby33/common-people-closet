@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from '@shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarModule } from '@core/component/nav-bar/nav-bar.module';
+import { HomeModule } from '@layout/home/home.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavBarModule } from '@core/component/nav-bar/nav-bar.module';
     SharedModule,
     HttpClientModule,
     NavBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [
