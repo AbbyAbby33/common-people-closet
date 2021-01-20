@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AllStoryComponent } from './all-story.component';
+import { RandomMatchComponent } from '@layout/random-match/random-match.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AllStoryComponent
+    component: RandomMatchComponent
   }
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AllStoryRoutingModule { }
+export class RandomMatchRoutingModule { }
