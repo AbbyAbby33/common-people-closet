@@ -28,11 +28,11 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
-  // {
-  //   // 暫時404頁面也都導回首頁
-  //   path: '**',
-  //   loadChildren: () => import('./layout/home/home.module').then(m => m.HomeModule),
-  // },
+  {
+    // 暫時404頁面也都導回首頁
+    path: '**',
+    loadChildren: () => import('./layout/home/home.module').then(m => m.HomeModule),
+  },
 ];
 
 @NgModule({
