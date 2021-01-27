@@ -1,0 +1,14 @@
+.home-wrap{
+  position: relative;
+  .face-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+      mat-icon {
+        color: #9E7A7A;
+      }
+  }
+}
