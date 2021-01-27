@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { AddSvgIconService } from '@app/core/service-front/add-svg-icon.service';
 import * as THREE from 'three';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cpc-home',
@@ -32,6 +33,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(
     private addSvgIconService: AddSvgIconService,
     private renderer2: Renderer2,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -186,6 +188,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.objects.push(diamond3);
     meshTop3.name = 'option3';
     meshBottom3.name = 'option3';
+    meshCenter3.name = 'option3';
+    meshCenterWire3.name = 'option3';
     meshTopWire3.name = 'option3';
     meshBottomWire3.name = 'option3';
 
@@ -260,15 +264,22 @@ export class HomeComponent implements OnInit, AfterViewInit {
       switch (selectedName) {
         case 'option1':
           console.log('點到選擇1');
+          this.router.navigate(['/all-story']);
           break;
         case 'option2':
           console.log('點到選擇2');
+          this.router.navigate(['/cloth-analysis']);
+
           break;
         case 'option3':
           console.log('點到選擇3');
+          this.router.navigate(['/random-match']);
+
           break;
         case 'option4':
           console.log('點到選擇4');
+          this.router.navigate(['/share-yours']);
+
           break;
       }
     } else {
