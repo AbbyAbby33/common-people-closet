@@ -1,4 +1,4 @@
-.home-wrap{
+.home-wrap {
   position: relative;
   .face-wrap {
     position: absolute;
@@ -7,8 +7,30 @@
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 10;
-      mat-icon {
-        color: #9E7A7A;
-      }
+    mat-icon {
+      color: #9e7a7a;
+    }
+    .word-all-story,
+    .word-cloth-analysis,
+    .word-random-match,
+    .word-share-yours {
+      position: absolute;
+    }
+    .word-all-story {
+      top: -50px;
+      left: 0;
+    }
+    .word-cloth-analysis {
+      top: -50px;
+      right: 0;
+    }
+    .word-random-match {
+      bottom: -100px;
+      left: 0;
+    }
+    .word-share-yours {
+      bottom: -100px;
+      right: 0;
+    }
   }
 }

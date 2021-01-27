@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2, OnDestroy } from '@angular/core';
 import { AddSvgIconService } from '@app/core/service-front/add-svg-icon.service';
 import * as THREE from 'three';
 import { Router } from '@angular/router';
@@ -8,9 +8,10 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('threeJsWrap') threeJsWrap: ElementRef;
+  @ViewChild('wordAllStory') wordAllStory: ElementRef;
 
   // 宣告全域變數
   scene;
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   container2;
 
   camera2;
-
+  textGeometry;
 
   constructor(
     private addSvgIconService: AddSvgIconService,
@@ -38,11 +39,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.addSvgIconService.addSvgIcon('face_home');
-
   }
 
   ngAfterViewInit(): void {
     this.initView();
+    this.setDiamondNavWord();
   }
 
   initView() {
@@ -227,6 +228,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
     meshTopWire4.name = 'option4';
     meshBottomWire4.name = 'option4';
 
+    // 文字測試===============================================
+    const loader = new THREE.FontLoader();
+
+    loader.load( 'assets/fonts/HanWangHeiLight_Regular.json', font => {
+      console.log('font', font);
+      this.textGeometry = new THREE.TextGeometry( '投稿故事', {
+        font: font,
+        size: 2,
+        height: 0,
+      } );
+      const textMaterial = new THREE.MeshPhongMaterial(
+        { color: 0xff0000, specular: 0xffffff }
+      );
+      const meshText = new THREE.Mesh(this.textGeometry, textMaterial);
+      meshText.position.set(40, -35, 20);
+
+      this.scene.add(meshText);
+
+    } );
 
     // 光
     // const light = new THREE.AmbientLight( 0x404040 ); // soft white light
@@ -246,6 +266,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     window.addEventListener('click', (event) => this.onMouseMove(event), false);
     window.addEventListener('resize', () => this.onWindowResize(), false );
     this.animate3();
+  }
+
+  /** 鑽石導覽列文字 */
+  setDiamondNavWord() {
+
   }
 
   onMouseMove(event: MouseEvent) {
@@ -305,6 +330,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.scene.children[3].rotation.y += 0.02;
 
     this.renderer.render(this.scene, this.camera);
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('click', (event) => this.onMouseMove(event), false);
+    window.removeEventListener('resize', () => this.onWindowResize(), false );
   }
 
 }
