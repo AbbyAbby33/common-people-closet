@@ -40,8 +40,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    this.addSvgIconService.addSvgIcon('face_home_no_mouth');
     this.addSvgIconService.addSvgIcon('heart');
-    this.addSvgIconService.addSvgIcon('face_home');
+    this.addSvgIconService.addSvgIcon('logo');
   }
 
   ngAfterViewInit(): void {

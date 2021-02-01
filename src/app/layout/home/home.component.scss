@@ -10,6 +10,7 @@
     // border: 1px solid black;
     display: inline-block;
     width: 800px;
+    // 面孔
     mat-icon.face-home {
       color: #e0a4a4;
       // color: #9e7a7a;
@@ -17,6 +18,7 @@
       height: auto;
       // border: 1px solid black;
     }
+    // 眼睛
     .heart-wrap {
       // border: 1px solid black;
       position: absolute;
@@ -35,29 +37,28 @@
         height: auto;
       }
     }
+    // 標題
+    .title {
+      > div {
+        margin: 10px 0 5px;
+        color: #b63636;
 
-
-    .word-all-story,
-    .word-cloth-analysis,
-    .word-random-match,
-    .word-share-yours {
-      position: absolute;
-    }
-    .word-all-story {
-      top: -50px;
-      left: 0;
-    }
-    .word-cloth-analysis {
-      top: -50px;
-      right: 0;
-    }
-    .word-random-match {
-      bottom: -100px;
-      left: 0;
-    }
-    .word-share-yours {
-      bottom: -100px;
-      right: 0;
+        mat-icon {
+          width: 38px;
+          height: auto;
+          // vertical-align: baseline;
+          display: inline-block;
+          padding-right: 8px;
+        }
+        h1 {
+          font-size: 50px;
+          display: inline-block;
+          // vertical-align: bottom;
+        }
+      }
+      > p {
+        font-size: 18px;
+      }
     }
   }
 }
