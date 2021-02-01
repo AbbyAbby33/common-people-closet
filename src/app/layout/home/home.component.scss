@@ -7,9 +7,36 @@
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 10;
-    mat-icon {
-      color: #9e7a7a;
+    // border: 1px solid black;
+    display: inline-block;
+    width: 800px;
+    mat-icon.face-home {
+      color: #e0a4a4;
+      // color: #9e7a7a;
+      width: 50%;
+      height: auto;
+      // border: 1px solid black;
     }
+    .heart-wrap {
+      // border: 1px solid black;
+      position: absolute;
+      width: 5%;
+      top: 18%;
+      &.heart-wrap-left {
+        left: 31%;
+      }
+      &.heart-wrap-right {
+        right: 35%;
+      }
+      mat-icon {
+        // border: 1px solid black;
+        color: #db2b28;
+        width: 100%;
+        height: auto;
+      }
+    }
+
+
     .word-all-story,
     .word-cloth-analysis,
     .word-random-match,

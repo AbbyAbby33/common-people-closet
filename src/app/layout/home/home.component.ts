@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { AddSvgIconService } from '@app/core/service-front/add-svg-icon.service';
 import * as THREE from 'three';
 import { Router } from '@angular/router';
@@ -8,10 +8,11 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('threeJsWrap') threeJsWrap: ElementRef;
-  @ViewChild('wordAllStory') wordAllStory: ElementRef;
+  @ViewChild('heartLeft') heartLeft: ElementRef;
+  @ViewChild('heartRight') heartRight: ElementRef;
 
   // 宣告全域變數
   scene;
@@ -35,9 +36,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     private addSvgIconService: AddSvgIconService,
     private renderer2: Renderer2,
     private router: Router,
+    private element: ElementRef,
   ) { }
 
   ngOnInit(): void {
+    this.addSvgIconService.addSvgIcon('heart');
     this.addSvgIconService.addSvgIcon('face_home');
   }
 
@@ -233,7 +236,22 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     loader.load( 'assets/fonts/HanWangHeiLight_Regular.json', font => {
       console.log('font', font);
-      this.textGeometry = new THREE.TextGeometry( '投稿故事', {
+      const textGeometry1 = new THREE.TextGeometry( '詳細故事', {
+        font: font,
+        size: 2,
+        height: 0,
+      } );
+      const textGeometry2 = new THREE.TextGeometry( '衣物分析', {
+        font: font,
+        size: 2,
+        height: 0,
+      } );
+      const textGeometry3 = new THREE.TextGeometry( '隨機搭配', {
+        font: font,
+        size: 2,
+        height: 0,
+      } );
+      const textGeometry4 = new THREE.TextGeometry( '投稿故事', {
         font: font,
         size: 2,
         height: 0,
@@ -241,10 +259,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       const textMaterial = new THREE.MeshPhongMaterial(
         { color: 0xff0000, specular: 0xffffff }
       );
-      const meshText = new THREE.Mesh(this.textGeometry, textMaterial);
-      meshText.position.set(40, -35, 20);
+      const meshText1 = new THREE.Mesh(textGeometry1, textMaterial);
+      meshText1.position.set(-40, 35, 20);
+      const meshText2 = new THREE.Mesh(textGeometry2, textMaterial);
+      meshText2.position.set(40, 35, 20);
+      const meshText3 = new THREE.Mesh(textGeometry3, textMaterial);
+      meshText3.position.set(-40, -35, 20);
+      const meshText4 = new THREE.Mesh(textGeometry4, textMaterial);
+      meshText4.position.set(40, -35, 20);
 
-      this.scene.add(meshText);
+      this.scene.add(meshText1);
+      this.scene.add(meshText2);
+      this.scene.add(meshText3);
+      this.scene.add(meshText4);
 
     } );
 
@@ -256,15 +283,17 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     // 4.建立繪圖器
     this.renderer = new THREE.WebGLRenderer({ antialias: true });  // 建立 WebGL 繪圖器
-    this.renderer.setClearColor('#FEDFE1');  // 設定背景色
+    // this.renderer.setClearColor('#FEDFE1');  // 設定背景色
+    this.renderer.setClearColor('#FFDED7');  // 設定背景色
     this.renderer.setSize(window.innerWidth, window.innerHeight); // 設定畫布為瀏覽器大小
     // document.body.appendChild(this.renderer.domElement); // 將畫布加入瀏覽器 DOM 中
     this.renderer2.appendChild(this.threeJsWrap.nativeElement, this.renderer.domElement);
 
 
     // 5.監聽滑鼠移動事件
-    window.addEventListener('click', (event) => this.onMouseMove(event), false);
+    window.addEventListener('click', (event) => this.onMouseClick(event), false);
     window.addEventListener('resize', () => this.onWindowResize(), false );
+    window.addEventListener('mousemove', (event) => this.onMouseMove(event), false );
     this.animate3();
   }
 
@@ -273,7 +302,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
-  onMouseMove(event: MouseEvent) {
+  onMouseClick(event: MouseEvent) {
     // console.log('event', event);
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
@@ -332,9 +361,22 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.renderer.render(this.scene, this.camera);
   }
 
-  ngOnDestroy(): void {
-    window.removeEventListener('click', (event) => this.onMouseMove(event), false);
-    window.removeEventListener('resize', () => this.onWindowResize(), false );
+  /** 滑鼠移動 */
+  onMouseMove(event: MouseEvent) {
+    // console.log('event', event);
+    // 眼睛移動範圍：上下15-23%(8%)，左右30-36%(6%)
+    const eyesPositionY = 15 + (event.pageY / window.innerHeight) * 8 + '%';
+    const eyesPositionXLeft = 30 + (event.pageX / window.innerWidth) * 6 + '%';
+    const eyesPositionXRight = 36 - (event.pageX / window.innerWidth) * 6 + '%';
+    // console.log('this.heartLeft', this.heartLeft);
+    // console.log('this.element', this.element);
+
+    this.renderer2.setStyle(this.heartLeft.nativeElement, 'top', eyesPositionY);
+    this.renderer2.setStyle(this.heartLeft.nativeElement, 'left', eyesPositionXLeft);
+    this.renderer2.setStyle(this.heartRight.nativeElement, 'top', eyesPositionY);
+    this.renderer2.setStyle(this.heartRight.nativeElement, 'right', eyesPositionXRight);
+    //  / window.innerHeight
+    // event.pageY
   }
 
 }
