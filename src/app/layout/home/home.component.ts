@@ -341,12 +341,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     } );
 
-    // 光
-    // const light = new THREE.AmbientLight( 0x404040 ); // soft white light
-    // const light = new THREE.DirectionalLight(0xffffff);
-    // light.position.set(0, 0, 1);
-    // this.scene.add(light);
-
     // 4.建立繪圖器
     this.renderer = new THREE.WebGLRenderer({ antialias: true });  // 建立 WebGL 繪圖器
     this.renderer.setClearColor('#FFDED7');  // 設定背景色
@@ -376,7 +370,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.raycaster.setFromCamera(this.mouse, this.camera);
     // calculate objects intersecting the picking ray
     const intersects = this.raycaster.intersectObjects(this.objects, true);
-    // console.log('intersects[0]', intersects[0]);
+
 
     if (intersects[0]) {
       const selectedName = intersects[0].object.name;
@@ -427,20 +421,36 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   /** 滑鼠移動 */
   onMouseMove(event: MouseEvent) {
-    // console.log('event', event);
     // 眼睛移動範圍：上下10-21%(11%)，左右30-36%(6%)
     const eyesPositionY = 10 + (event.pageY / window.innerHeight) * 11 + '%';
     const eyesPositionXLeft = 30 + (event.pageX / window.innerWidth) * 6 + '%';
     const eyesPositionXRight = 36 - (event.pageX / window.innerWidth) * 6 + '%';
-    // console.log('this.heartLeft', this.heartLeft);
-    // console.log('this.element', this.element);
 
     this.renderer2.setStyle(this.heartLeft.nativeElement, 'top', eyesPositionY);
     this.renderer2.setStyle(this.heartLeft.nativeElement, 'left', eyesPositionXLeft);
     this.renderer2.setStyle(this.heartRight.nativeElement, 'top', eyesPositionY);
     this.renderer2.setStyle(this.heartRight.nativeElement, 'right', eyesPositionXRight);
-    //  / window.innerHeight
-    // event.pageY
+
+
+
+    // mouse: cursor
+    this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    // update the picking ray with the camera and mouse position
+    this.raycaster.setFromCamera(this.mouse, this.camera);
+    // calculate objects intersecting the picking ray
+    const intersects = this.raycaster.intersectObjects(this.objects, true);
+
+
+    if (intersects[0]) {
+      this.renderer2.setStyle(this.threeJsWrap.nativeElement, 'cursor', 'pointer');
+    } else {
+      this.renderer2.setStyle(this.threeJsWrap.nativeElement, 'cursor', 'default');
+    }
+
+
+
   }
 
 }
