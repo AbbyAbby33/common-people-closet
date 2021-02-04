@@ -66,10 +66,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     canvas.height = 12;
 
     const gradient = ctx.createLinearGradient(0, 0, 0, 10);
-    gradient.addColorStop(0, '#CCE0EB');
-    gradient.addColorStop(0.5, '#60BCC1');
-    gradient.addColorStop(0.8, '#C1EAD3');
-    gradient.addColorStop(1, '#6ABFCB');
+    gradient.addColorStop(0, '#DCC4F3');
+    gradient.addColorStop(0.5, '#C0E4F9');
+    gradient.addColorStop(0.7, '#007CC0');
+    gradient.addColorStop(0.8, '#C0E4F9');
+    gradient.addColorStop(1, '#6EC6F6');
 
     ctx.fillStyle = gradient;  // 填滿顏色
     ctx.fillRect(0, 0, 175, 100);
@@ -109,7 +110,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     diamond1.add(meshBottomWire1);
 
     diamond1.rotation.set(1 / 10 * Math.PI, 0, 1 / 10 * Math.PI);
-    diamond1.position.set(50, 50, 0);
+    diamond1.position.set(-30, 45, 0);
 
     this.scene.add(diamond1);
     this.objects.push(diamond1);
@@ -120,17 +121,36 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
     // 鑽石二========================================
+    const canvas2 = document.createElement('canvas');
+    const ctx2 = canvas2.getContext('2d');
+    canvas2.width = 12;
+    canvas2.height = 12;
+
+    const gradient2 = ctx2.createLinearGradient(0, 0, 0, 10);
+    gradient2.addColorStop(0, '#EEF4BA');
+    gradient2.addColorStop(0.5, '#C0DAAF');
+    gradient2.addColorStop(0.8, '#BBEADE');
+    gradient2.addColorStop(1, '#F9FFE8');
+
+    ctx2.fillStyle = gradient2;  // 填滿顏色
+    ctx2.fillRect(0, 0, 175, 100);
+
+    const textureCanvas2 = new THREE.CanvasTexture(canvas2);
+    const materialCanvas2 = new THREE.MeshBasicMaterial({ map: textureCanvas2 });
+
+
+
     const geometryTop2 = new THREE.CylinderBufferGeometry(5, 10, 5, 6, 1);
     const geometryBottom2 = new THREE.CylinderBufferGeometry(10, 0, 10, 6, 1);
     const diamond2 = new THREE.Object3D();
 
-    const meshTop2 = new THREE.Mesh(geometryTop2, materialCanvas);
+    const meshTop2 = new THREE.Mesh(geometryTop2, materialCanvas2);
     meshTop2.position.set(0, -2.5, 0);
     meshTop2.userData.parent = diamond2;
     const meshTopWire2 = new THREE.Mesh(geometryTop2, materialWire);
     meshTopWire2.position.set(0, -2.5, 0);
     meshTopWire2.userData.parent = diamond2;
-    const meshBottom2 = new THREE.Mesh(geometryBottom2, materialCanvas);
+    const meshBottom2 = new THREE.Mesh(geometryBottom2, materialCanvas2);
     meshBottom2.position.set(0, -10, 0);
     meshBottom2.userData.parent = diamond2;
     const meshBottomWire2 = new THREE.Mesh(geometryBottom2, materialWire);
@@ -143,7 +163,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     diamond2.add(meshBottomWire2);
 
     diamond2.rotation.set(1 / 10 * Math.PI, 0, 1 / 10 * Math.PI);
-    diamond2.position.set(-50, 50, 0);
+    diamond2.position.set(60, 10, 0);
 
     this.scene.add(diamond2);
     this.objects.push(diamond2);
@@ -154,24 +174,43 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
     // 鑽石三========================================
+    const canvas3 = document.createElement('canvas');
+    const ctx3 = canvas3.getContext('2d');
+    canvas3.width = 12;
+    canvas3.height = 12;
+
+    const gradient3 = ctx3.createLinearGradient(0, 0, 0, 10);
+    gradient3.addColorStop(0, '#CCE0EB');
+    gradient3.addColorStop(0.5, '#60BCC1');
+    gradient3.addColorStop(0.8, '#C1EAD3');
+    gradient3.addColorStop(1, '#6ABFCB');
+
+    ctx3.fillStyle = gradient3;  // 填滿顏色
+    ctx3.fillRect(0, 0, 175, 100);
+
+    const textureCanvas3 = new THREE.CanvasTexture(canvas3);
+    const materialCanvas3 = new THREE.MeshBasicMaterial({ map: textureCanvas3 });
+
+
+
     const geometryTop3 = new THREE.CylinderBufferGeometry(0, 6, 5, 6, 1);
     const geometryCenter3 = new THREE.CylinderBufferGeometry(6, 6, 12, 6, 1);
     const geometryBottom3 = new THREE.CylinderBufferGeometry(6, 0, 5, 6, 1);
     const diamond3 = new THREE.Object3D();
 
-    const meshTop3 = new THREE.Mesh(geometryTop3, materialCanvas);
+    const meshTop3 = new THREE.Mesh(geometryTop3, materialCanvas3);
     meshTop3.position.set(0, 8.5, 0);
     meshTop3.userData.parent = diamond3;
     const meshTopWire3 = new THREE.Mesh(geometryTop3, materialWire);
     meshTopWire3.position.set(0, 8.5, 0);
     meshTopWire3.userData.parent = diamond3;
-    const meshCenter3 = new THREE.Mesh(geometryCenter3, materialCanvas);
+    const meshCenter3 = new THREE.Mesh(geometryCenter3, materialCanvas3);
     // meshCenter3.position.set(0, 0, 0);
     meshCenter3.userData.parent = diamond3;
     const meshCenterWire3 = new THREE.Mesh(geometryCenter3, materialWire);
     // meshCenterWire3.position.set(0, 0, 0);
     meshCenterWire3.userData.parent = diamond3;
-    const meshBottom3 = new THREE.Mesh(geometryBottom3, materialCanvas);
+    const meshBottom3 = new THREE.Mesh(geometryBottom3, materialCanvas3);
     meshBottom3.position.set(0, -8.5, 0);
     meshBottom3.userData.parent = diamond3;
     const meshBottomWire3 = new THREE.Mesh(geometryBottom3, materialWire);
@@ -187,7 +226,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     diamond3.add(meshBottomWire3);
 
     diamond3.rotation.set(0, 0, 1 / 10 * Math.PI);
-    diamond3.position.set(-50, -30, 0);
+    diamond3.position.set(20, 35, 0);
 
     this.scene.add(diamond3);
     this.objects.push(diamond3);
@@ -200,17 +239,37 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
     // 鑽石四========================================
+    const canvas4 = document.createElement('canvas');
+    const ctx4 = canvas4.getContext('2d');
+    canvas4.width = 12;
+    canvas4.height = 12;
+
+    const gradient4 = ctx4.createLinearGradient(0, 0, 0, 10);
+    gradient4.addColorStop(0, '#FAE6E9');
+    gradient4.addColorStop(0.5, '#DDA2B1');
+    gradient4.addColorStop(0.8, '#DCD1E8');
+    gradient4.addColorStop(1, '#C9B4D7');
+
+    ctx4.fillStyle = gradient4;  // 填滿顏色
+    ctx4.fillRect(0, 0, 175, 100);
+
+    const textureCanvas4 = new THREE.CanvasTexture(canvas4);
+    const materialCanvas4 = new THREE.MeshBasicMaterial({ map: textureCanvas4 });
+
+
+
+
     const geometryTop4 = new THREE.CylinderBufferGeometry(8, 12, 4, 8, 1);
     const geometryBottom4 = new THREE.CylinderBufferGeometry(12, 8, 4, 8, 1);
     const diamond4 = new THREE.Object3D();
 
-    const meshTop4 = new THREE.Mesh(geometryTop4, materialCanvas);
+    const meshTop4 = new THREE.Mesh(geometryTop4, materialCanvas4);
     meshTop4.position.set(0, 2, 0);
     meshTop4.userData.parent = diamond4;
     const meshTopWire4 = new THREE.Mesh(geometryTop4, materialWire);
     meshTopWire4.position.set(0, 2, 0);
     meshTopWire4.userData.parent = diamond4;
-    const meshBottom4 = new THREE.Mesh(geometryBottom4, materialCanvas);
+    const meshBottom4 = new THREE.Mesh(geometryBottom4, materialCanvas4);
     meshBottom4.position.set(0, -2, 0);
     meshBottom4.userData.parent = diamond4;
     const meshBottomWire4 = new THREE.Mesh(geometryBottom4, materialWire);
@@ -223,7 +282,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     diamond4.add(meshBottomWire4);
 
     diamond4.rotation.set(1 / 10 * Math.PI, 0, 1 / 10 * Math.PI);
-    diamond4.position.set(50, -30, 0);
+    diamond4.position.set(-60, 0, 0);
 
     this.scene.add(diamond4);
     this.objects.push(diamond4);
@@ -261,13 +320,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
         { color: 0xff0000, specular: 0xffffff }
       );
       const meshText1 = new THREE.Mesh(textGeometry1, textMaterial);
-      meshText1.position.set(-40, 35, 20);
+      meshText1.position.set(-60, -10, 20);
       const meshText2 = new THREE.Mesh(textGeometry2, textMaterial);
-      meshText2.position.set(40, 35, 20);
+      meshText2.position.set(-30, 20, 20);
       const meshText3 = new THREE.Mesh(textGeometry3, textMaterial);
-      meshText3.position.set(-40, -35, 20);
+      meshText3.position.set(20, 20, 20);
       const meshText4 = new THREE.Mesh(textGeometry4, textMaterial);
-      meshText4.position.set(40, -35, 20);
+      meshText4.position.set(50, -10, 20);
+
+      diamond1.position.set(-30, 50, 0);
+      diamond2.position.set(65, 5, 0);
+      diamond3.position.set(30, 38, 0);
+      diamond4.position.set(-60, 0, 0);
+
 
       this.scene.add(meshText1);
       this.scene.add(meshText2);
@@ -284,7 +349,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     // 4.建立繪圖器
     this.renderer = new THREE.WebGLRenderer({ antialias: true });  // 建立 WebGL 繪圖器
-    // this.renderer.setClearColor('#FEDFE1');  // 設定背景色
     this.renderer.setClearColor('#FFDED7');  // 設定背景色
     this.renderer.setSize(window.innerWidth, window.innerHeight); // 設定畫布為瀏覽器大小
     // document.body.appendChild(this.renderer.domElement); // 將畫布加入瀏覽器 DOM 中
@@ -353,7 +417,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     window.requestAnimationFrame(() => this.animate3());
     // console.log('this.scene', this.scene);
     // console.log('this.camera', this.camera);
-    // this.scene.children[0].rotation.x += 0.01;
     this.scene.children[0].rotation.y += 0.02;
     this.scene.children[1].rotation.y += 0.02;
     this.scene.children[2].rotation.y += 0.02;
@@ -365,8 +428,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   /** 滑鼠移動 */
   onMouseMove(event: MouseEvent) {
     // console.log('event', event);
-    // 眼睛移動範圍：上下15-23%(8%)，左右30-36%(6%)
-    const eyesPositionY = 15 + (event.pageY / window.innerHeight) * 8 + '%';
+    // 眼睛移動範圍：上下10-21%(11%)，左右30-36%(6%)
+    const eyesPositionY = 10 + (event.pageY / window.innerHeight) * 11 + '%';
     const eyesPositionXLeft = 30 + (event.pageX / window.innerWidth) * 6 + '%';
     const eyesPositionXRight = 36 - (event.pageX / window.innerWidth) * 6 + '%';
     // console.log('this.heartLeft', this.heartLeft);
