@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private addSvgIconService: AddSvgIconService,
     private renderer2: Renderer2,
     private router: Router,
-    private element: ElementRef,
   ) { }
 
   ngOnInit(): void {
@@ -205,10 +204,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     meshTopWire3.position.set(0, 8.5, 0);
     meshTopWire3.userData.parent = diamond3;
     const meshCenter3 = new THREE.Mesh(geometryCenter3, materialCanvas3);
-    // meshCenter3.position.set(0, 0, 0);
     meshCenter3.userData.parent = diamond3;
     const meshCenterWire3 = new THREE.Mesh(geometryCenter3, materialWire);
-    // meshCenterWire3.position.set(0, 0, 0);
     meshCenterWire3.userData.parent = diamond3;
     const meshBottom3 = new THREE.Mesh(geometryBottom3, materialCanvas3);
     meshBottom3.position.set(0, -8.5, 0);
@@ -294,28 +291,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
     // 文字測試===============================================
     const loader = new THREE.FontLoader();
 
-    loader.load( 'assets/fonts/HanWangHeiLight_Regular.json', font => {
+    loader.load('assets/fonts/HanWangHeiLight_Regular.json', font => {
       console.log('font', font);
-      const textGeometry1 = new THREE.TextGeometry( '詳細故事', {
+      const textGeometry1 = new THREE.TextGeometry('詳細故事', {
         font: font,
         size: 2,
         height: 0,
-      } );
-      const textGeometry2 = new THREE.TextGeometry( '衣物分析', {
+      });
+      const textGeometry2 = new THREE.TextGeometry('衣物分析', {
         font: font,
         size: 2,
         height: 0,
-      } );
-      const textGeometry3 = new THREE.TextGeometry( '隨機搭配', {
+      });
+      const textGeometry3 = new THREE.TextGeometry('隨機搭配', {
         font: font,
         size: 2,
         height: 0,
-      } );
-      const textGeometry4 = new THREE.TextGeometry( '投稿故事', {
+      });
+      const textGeometry4 = new THREE.TextGeometry('投稿故事', {
         font: font,
         size: 2,
         height: 0,
-      } );
+      });
       const textMaterial = new THREE.MeshPhongMaterial(
         { color: 0xff0000, specular: 0xffffff }
       );
@@ -328,10 +325,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
       const meshText4 = new THREE.Mesh(textGeometry4, textMaterial);
       meshText4.position.set(50, -10, 20);
 
-      diamond1.position.set(-30, 50, 0);
-      diamond2.position.set(65, 5, 0);
-      diamond3.position.set(30, 38, 0);
-      diamond4.position.set(-60, 0, 0);
+      // diamond1.position.set(-30, 50, 0);
+      // diamond2.position.set(65, 5, 0);
+      // diamond3.position.set(30, 38, 0);
+      // diamond4.position.set(-60, 0, 0);
 
 
       this.scene.add(meshText1);
@@ -339,7 +336,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.scene.add(meshText3);
       this.scene.add(meshText4);
 
-    } );
+    });
 
     // 4.建立繪圖器
     this.renderer = new THREE.WebGLRenderer({ antialias: true });  // 建立 WebGL 繪圖器
@@ -351,8 +348,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     // 5.監聽滑鼠移動事件
     window.addEventListener('click', (event) => this.onMouseClick(event), false);
-    window.addEventListener('resize', () => this.onWindowResize(), false );
-    window.addEventListener('mousemove', (event) => this.onMouseMove(event), false );
+    window.addEventListener('resize', () => this.onWindowResize(), false);
+    window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
     this.animate3();
   }
 
@@ -403,7 +400,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   onWindowResize() {
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize( window.innerWidth, window.innerHeight );
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
   animate3() {
@@ -421,6 +418,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   /** 滑鼠移動 */
   onMouseMove(event: MouseEvent) {
+    // 1. 眼睛動畫
     // 眼睛移動範圍：上下10-21%(11%)，左右30-36%(6%)
     const eyesPositionY = 10 + (event.pageY / window.innerHeight) * 11 + '%';
     const eyesPositionXLeft = 30 + (event.pageX / window.innerWidth) * 6 + '%';
@@ -433,7 +431,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
 
-    // mouse: cursor
+    // 2. mouse: cursor
+    // 3.互動動畫
+
     this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
@@ -445,12 +445,56 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     if (intersects[0]) {
       this.renderer2.setStyle(this.threeJsWrap.nativeElement, 'cursor', 'pointer');
+      this.addStar();
     } else {
       this.renderer2.setStyle(this.threeJsWrap.nativeElement, 'cursor', 'default');
     }
+  }
 
 
+  addStar() {
+    console.log('hi');
+    const geometry = new THREE.BufferGeometry();
+    const vertices = [];
+    const materials = [];
+    const textureLoader = new THREE.TextureLoader();
+    const star = textureLoader.load('assets/images/star.png');
+
+    for (let i = 0; i < 10; i++) {
+      // const x = Math.random() * 20;
+      // const y = Math.random() * 20;
+      // const z = Math.random() * 20;
+      const x = 0;
+      const y = 0;
+      const z = 0;
+
+
+      vertices.push(x, y, z);
+    }
+
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+    const color = [0.90, 0.05, 0.5];
+    const size = 100;
+
+    // materials[0] = new THREE.PointsMaterial( { size: 35, sizeAttenuation: true, map: star, alphaTest: 0.8, transparent: false, color: 0xFFFF00 } );
+    materials[0] = new THREE.PointsMaterial( { size: 35, sizeAttenuation: true, map: star, alphaTest: 0.8, transparent: false } );
+    // materials[0].color.setRGB( 1, 0, 0 );
+    materials[0].color.setHex(0xFFFF00);
+    const particles = new THREE.Points(geometry, materials[0]);
+
+    // particles.rotation.x = Math.random() * 6;
+    // particles.rotation.y = Math.random() * 6;
+    // particles.rotation.z = Math.random() * 6;
+
+    particles.position.set(-60, 30, 0);
+
+    this.scene.add(particles);
+    this.camera.updateProjectionMatrix();
+
+    console.log('this.scene', this.scene);
 
   }
+
+
 
 }
