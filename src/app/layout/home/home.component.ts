@@ -70,8 +70,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   /** 2-1.建立物件加入場景：加入鑽石到場景 */
   addDiamondMesh() {
-
-    // 2-1-1.建立一張canvas漸層顏色材質+共用線框材質
+    // 建立材質：共用線框材質
+    const materialWire = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      wireframe: true
+    });
+    // 建立材質：建立一張canvas漸層顏色材質
     const canvasColorForClothAnalysis = [
       {stop: 0, color: '#DCC4F3'},
       {stop: 0.5, color: '#C0E4F9'},
@@ -80,51 +84,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
       {stop: 1, color: '#6EC6F6'},
     ];
     const materialForClothAnalysis = this.creatCanvasMaterial(canvasColorForClothAnalysis);
-    const materialWire = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      wireframe: true
-    });
 
-    // 3-2.建立物件並貼材質
+    // 建立物件並貼材質：鑽石一========================================
+    const geometryForClothAnalysisTop = new THREE.ConeBufferGeometry(10, 5, 8, 1, true);
+    const geometryForClothAnalysisBottom = new THREE.CylinderBufferGeometry(10, 0, 20, 8, 1, true);
+    const diamondForClothAnalysis = new THREE.Object3D();
 
-    // 鑽石一========================================
-    const geometryTop1 = new THREE.ConeBufferGeometry(10, 5, 8, 1, true);
-    const geometryBottom1 = new THREE.CylinderBufferGeometry(10, 0, 20, 8, 1, true);
-    const diamond1 = new THREE.Object3D();
+    // const clothAnalysisParams = {
+    //   parentMesh: diamondForClothAnalysis,
+    //   geometry: geometryForClothAnalysisTop,
+    //   material: materialForClothAnalysis,
+    //   name: 'cloth-analysis',
+    //   position: [0, -5, 0],
+    // };
 
-    const meshTop1 = new THREE.Mesh(geometryTop1, materialForClothAnalysis);
-    meshTop1.position.set(0, -5, 0);
-    meshTop1.userData.parent = diamond1;
-    const meshTopWire1 = new THREE.Mesh(geometryTop1, materialWire);
-    meshTopWire1.position.set(0, -5, 0);
-    meshTopWire1.userData.parent = diamond1;
-    const meshBottom1 = new THREE.Mesh(geometryBottom1, materialForClothAnalysis);
-    meshBottom1.position.set(0, -17.5, 0);
-    meshBottom1.userData.parent = diamond1;
-    const meshBottomWire1 = new THREE.Mesh(geometryBottom1, materialWire);
-    meshBottomWire1.position.set(0, -17.5, 0);
-    meshBottomWire1.userData.parent = diamond1;
-
-    diamond1.name = 'option1';
-
-    diamond1.add(meshTop1);
-    diamond1.add(meshTopWire1);
-    diamond1.add(meshBottom1);
-    diamond1.add(meshBottomWire1);
-
-    diamond1.rotation.set(1 / 10 * Math.PI, 0, 1 / 10 * Math.PI);
-    diamond1.position.set(-30, 45, 0);
-
-    this.scene.add(diamond1);
-    this.objects.push(diamond1);
-    meshTop1.name = 'option1';
-    meshBottom1.name = 'option1';
-    meshTopWire1.name = 'option1';
-    meshBottomWire1.name = 'option1';
-
+    this.addMeshIntoGroup(diamondForClothAnalysis, geometryForClothAnalysisTop, materialForClothAnalysis, 'cloth-analysis', [0, -5, 0]);
+    this.addMeshIntoGroup(diamondForClothAnalysis, geometryForClothAnalysisTop, materialWire, 'cloth-analysis', [0, -5, 0]);
+    this.addMeshIntoGroup(diamondForClothAnalysis, geometryForClothAnalysisBottom, materialForClothAnalysis, 'cloth-analysis', [0, -17.5, 0]);
+    this.addMeshIntoGroup(diamondForClothAnalysis, geometryForClothAnalysisBottom, materialWire, 'cloth-analysis', [0, -17.5, 0]);
+    this.addDiamondGroupIntoScene(diamondForClothAnalysis, [-30, 45, 0]);
 
     // 鑽石二========================================
-    // 2-1-1.建立一張canvas漸層顏色材質+共用線框材質
+    // 建立材質：建立一張canvas漸層顏色材質
     const canvasColorForShareYours = [
       {stop: 0, color: '#EEF4BA'},
       {stop: 0.5, color: '#C0DAAF'},
@@ -133,42 +114,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
     ];
     const materialForShareYours = this.creatCanvasMaterial(canvasColorForShareYours);
 
+    // 建立物件並貼材質
+    const geometryForShareYoursTop = new THREE.CylinderBufferGeometry(5, 10, 5, 6, 1);
+    const geometryForShareYoursBottom = new THREE.CylinderBufferGeometry(10, 0, 10, 6, 1);
+    const diamondForShareYours = new THREE.Object3D();
 
-    const geometryTop2 = new THREE.CylinderBufferGeometry(5, 10, 5, 6, 1);
-    const geometryBottom2 = new THREE.CylinderBufferGeometry(10, 0, 10, 6, 1);
-    const diamond2 = new THREE.Object3D();
-
-    const meshTop2 = new THREE.Mesh(geometryTop2, materialForShareYours);
-    meshTop2.position.set(0, -2.5, 0);
-    meshTop2.userData.parent = diamond2;
-    const meshTopWire2 = new THREE.Mesh(geometryTop2, materialWire);
-    meshTopWire2.position.set(0, -2.5, 0);
-    meshTopWire2.userData.parent = diamond2;
-    const meshBottom2 = new THREE.Mesh(geometryBottom2, materialForShareYours);
-    meshBottom2.position.set(0, -10, 0);
-    meshBottom2.userData.parent = diamond2;
-    const meshBottomWire2 = new THREE.Mesh(geometryBottom2, materialWire);
-    meshBottomWire2.position.set(0, -10, 0);
-    meshBottomWire2.userData.parent = diamond2;
-
-    diamond2.add(meshTop2);
-    diamond2.add(meshTopWire2);
-    diamond2.add(meshBottom2);
-    diamond2.add(meshBottomWire2);
-
-    diamond2.rotation.set(1 / 10 * Math.PI, 0, 1 / 10 * Math.PI);
-    diamond2.position.set(60, 10, 0);
-
-    this.scene.add(diamond2);
-    this.objects.push(diamond2);
-    meshTop2.name = 'option2';
-    meshBottom2.name = 'option2';
-    meshTopWire2.name = 'option2';
-    meshBottomWire2.name = 'option2';
-
+    this.addMeshIntoGroup(diamondForShareYours, geometryForShareYoursTop, materialForShareYours, 'share-yours', [0, -2.5, 0]);
+    this.addMeshIntoGroup(diamondForShareYours, geometryForShareYoursTop, materialWire, 'share-yours', [0, -2.5, 0]);
+    this.addMeshIntoGroup(diamondForShareYours, geometryForShareYoursBottom, materialForShareYours, 'share-yours', [0, -10, 0]);
+    this.addMeshIntoGroup(diamondForShareYours, geometryForShareYoursBottom, materialWire, 'share-yours', [0, -10, 0]);
+    this.addDiamondGroupIntoScene(diamondForShareYours, [60, 10, 0]);
 
     // 鑽石三========================================
-    // 2-1-1.建立一張canvas漸層顏色材質+共用線框材質
+    // 建立材質：建立一張canvas漸層顏色材質
     const canvasColorForRandomMatch = [
       {stop: 0, color: '#CCE0EB'},
       {stop: 0.5, color: '#60BCC1'},
@@ -177,51 +135,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
     ];
     const materialForRandomMatch = this.creatCanvasMaterial(canvasColorForRandomMatch);
 
-    const geometryTop3 = new THREE.CylinderBufferGeometry(0, 6, 5, 6, 1);
-    const geometryCenter3 = new THREE.CylinderBufferGeometry(6, 6, 12, 6, 1);
-    const geometryBottom3 = new THREE.CylinderBufferGeometry(6, 0, 5, 6, 1);
-    const diamond3 = new THREE.Object3D();
+    // 建立物件並貼材質
+    const geometryForRandomMatchTop = new THREE.CylinderBufferGeometry(0, 6, 5, 6, 1);
+    const geometryForRandomMatchCenter = new THREE.CylinderBufferGeometry(6, 6, 12, 6, 1);
+    const geometryForRandomMatchBottom = new THREE.CylinderBufferGeometry(6, 0, 5, 6, 1);
+    const diamondForRandomMatch = new THREE.Object3D();
 
-    const meshTop3 = new THREE.Mesh(geometryTop3, materialForRandomMatch);
-    meshTop3.position.set(0, 8.5, 0);
-    meshTop3.userData.parent = diamond3;
-    const meshTopWire3 = new THREE.Mesh(geometryTop3, materialWire);
-    meshTopWire3.position.set(0, 8.5, 0);
-    meshTopWire3.userData.parent = diamond3;
-    const meshCenter3 = new THREE.Mesh(geometryCenter3, materialForRandomMatch);
-    meshCenter3.userData.parent = diamond3;
-    const meshCenterWire3 = new THREE.Mesh(geometryCenter3, materialWire);
-    meshCenterWire3.userData.parent = diamond3;
-    const meshBottom3 = new THREE.Mesh(geometryBottom3, materialForRandomMatch);
-    meshBottom3.position.set(0, -8.5, 0);
-    meshBottom3.userData.parent = diamond3;
-    const meshBottomWire3 = new THREE.Mesh(geometryBottom3, materialWire);
-    meshBottomWire3.position.set(0, -8.5, 0);
-    meshBottomWire3.userData.parent = diamond3;
-
-
-    diamond3.add(meshTop3);
-    diamond3.add(meshTopWire3);
-    diamond3.add(meshCenter3);
-    diamond3.add(meshCenterWire3);
-    diamond3.add(meshBottom3);
-    diamond3.add(meshBottomWire3);
-
-    diamond3.rotation.set(0, 0, 1 / 10 * Math.PI);
-    diamond3.position.set(20, 35, 0);
-
-    this.scene.add(diamond3);
-    this.objects.push(diamond3);
-    meshTop3.name = 'option3';
-    meshBottom3.name = 'option3';
-    meshCenter3.name = 'option3';
-    meshCenterWire3.name = 'option3';
-    meshTopWire3.name = 'option3';
-    meshBottomWire3.name = 'option3';
+    this.addMeshIntoGroup(diamondForRandomMatch, geometryForRandomMatchTop, materialForRandomMatch, 'random-match', [0, 8.5, 0]);
+    this.addMeshIntoGroup(diamondForRandomMatch, geometryForRandomMatchTop, materialWire, 'random-match', [0, 8.5, 0]);
+    this.addMeshIntoGroup(diamondForRandomMatch, geometryForRandomMatchCenter, materialForRandomMatch, 'random-match', [0, 0, 0]);
+    this.addMeshIntoGroup(diamondForRandomMatch, geometryForRandomMatchCenter, materialWire, 'random-match', [0, 0, 0]);
+    this.addMeshIntoGroup(diamondForRandomMatch, geometryForRandomMatchBottom, materialForRandomMatch, 'random-match', [0, -8.5, 0]);
+    this.addMeshIntoGroup(diamondForRandomMatch, geometryForRandomMatchBottom, materialWire, 'random-match', [0, -8.5, 0]);
+    this.addDiamondGroupIntoScene(diamondForRandomMatch, [20, 35, 0]);
 
 
     // 鑽石四========================================
-    // 2-1-1.建立一張canvas漸層顏色材質+共用線框材質
+    // 建立材質：建立一張canvas漸層顏色材質
     const canvasColorForAllStory = [
       {stop: 0, color: '#FAE6E9'},
       {stop: 0.5, color: '#DDA2B1'},
@@ -229,42 +159,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
       {stop: 1, color: '#C9B4D7'},
     ];
     const materialForAllStory = this.creatCanvasMaterial(canvasColorForAllStory);
+    // 建立物件並貼材質
+    const geometryForAllStoryTop = new THREE.CylinderBufferGeometry(8, 12, 4, 8, 1);
+    const geometryForAllStoryBottom = new THREE.CylinderBufferGeometry(12, 8, 4, 8, 1);
+    const diamondForAllStory = new THREE.Object3D();
 
+    this.addMeshIntoGroup(diamondForAllStory, geometryForAllStoryTop, materialForAllStory, 'all-story', [0, 2, 0]);
+    this.addMeshIntoGroup(diamondForAllStory, geometryForAllStoryTop, materialWire, 'all-story', [0, 2, 0]);
+    this.addMeshIntoGroup(diamondForAllStory, geometryForAllStoryBottom, materialForAllStory, 'all-story', [0, -2, 0]);
+    this.addMeshIntoGroup(diamondForAllStory, geometryForAllStoryBottom, materialWire, 'all-story', [0, -2, 0]);
+    this.addDiamondGroupIntoScene(diamondForAllStory, [-60, 0, 0]);
 
-    const geometryTop4 = new THREE.CylinderBufferGeometry(8, 12, 4, 8, 1);
-    const geometryBottom4 = new THREE.CylinderBufferGeometry(12, 8, 4, 8, 1);
-    const diamond4 = new THREE.Object3D();
-
-    const meshTop4 = new THREE.Mesh(geometryTop4, materialForAllStory);
-    meshTop4.position.set(0, 2, 0);
-    meshTop4.userData.parent = diamond4;
-    const meshTopWire4 = new THREE.Mesh(geometryTop4, materialWire);
-    meshTopWire4.position.set(0, 2, 0);
-    meshTopWire4.userData.parent = diamond4;
-    const meshBottom4 = new THREE.Mesh(geometryBottom4, materialForAllStory);
-    meshBottom4.position.set(0, -2, 0);
-    meshBottom4.userData.parent = diamond4;
-    const meshBottomWire4 = new THREE.Mesh(geometryBottom4, materialWire);
-    meshBottomWire4.position.set(0, -2, 0);
-    meshBottomWire4.userData.parent = diamond4;
-
-    diamond4.add(meshTop4);
-    diamond4.add(meshTopWire4);
-    diamond4.add(meshBottom4);
-    diamond4.add(meshBottomWire4);
-
-    diamond4.rotation.set(1 / 10 * Math.PI, 0, 1 / 10 * Math.PI);
-    diamond4.position.set(-60, 0, 0);
-
-    this.scene.add(diamond4);
-    this.objects.push(diamond4);
-    meshTop4.name = 'option4';
-    meshBottom4.name = 'option4';
-    meshTopWire4.name = 'option4';
-    meshBottomWire4.name = 'option4';
   }
 
-  /** 建立漸層材質 */
+  /** 2-1-(1)建立漸層材質 */
   creatCanvasMaterial(colorStopAry: Array<any>) {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
@@ -282,6 +190,32 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const textureCanvas = new THREE.CanvasTexture(canvas);
     const materialCanvas = new THREE.MeshBasicMaterial({ map: textureCanvas });
     return materialCanvas;
+  }
+
+  /** 2-1-(2)建立鑽石元件加入到群組
+   * @param parentMesh mesh父群組
+   * @param geometry 形狀
+   * @param material 材質
+   * @param name 命名
+   * @param position 在父群組內的位置
+   */
+  addMeshIntoGroup(parentMesh, geometry, material, name: string, position: Array<number>) {
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(position[0], position[1], position[2]);
+    mesh.name = name;
+    parentMesh.add(mesh);
+    // mesh.userData.parent = parentMesh;
+  }
+
+  /** 2-1-(3)鑽石群組加入到場景
+   * @param group mesh父群組
+   * @param position 在場景的位置
+   */
+  addDiamondGroupIntoScene(group, position: Array<number>) {
+    group.rotation.set(1 / 10 * Math.PI, 0, 1 / 10 * Math.PI);
+    group.position.set(position[0], position[1], position[2]);
+    this.scene.add(group);
+    this.objects.push(group);
   }
 
   /** 2-2.建立物件加入場景：鑽石導覽列文字 */
@@ -347,28 +281,28 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.raycaster.setFromCamera(this.mouse, this.camera);
     // calculate objects intersecting the picking ray
     const intersects = this.raycaster.intersectObjects(this.objects, true);
+    console.log('intersects', intersects);
 
 
     if (intersects[0]) {
       const selectedName = intersects[0].object.name;
       switch (selectedName) {
-        case 'option1':
-          console.log('點到選擇1');
-          this.router.navigate(['/all-story']);
-          break;
-        case 'option2':
-          console.log('點到選擇2');
+        case 'cloth-analysis':
+          console.log('/cloth-analysis');
           this.router.navigate(['/cloth-analysis']);
-
           break;
-        case 'option3':
-          console.log('點到選擇3');
+        case 'share-yours':
+          console.log('share-yours');
+          this.router.navigate(['/share-yours']);
+          break;
+        case 'random-match':
+          console.log('random-match');
           this.router.navigate(['/random-match']);
 
           break;
-        case 'option4':
-          console.log('點到選擇4');
-          this.router.navigate(['/share-yours']);
+        case 'all-story':
+          console.log('/all-story');
+          this.router.navigate(['/all-story']);
 
           break;
       }
