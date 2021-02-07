@@ -77,15 +77,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
     // 建立材質：建立一張canvas漸層顏色材質
     const canvasColorForClothAnalysis = [
-      {stop: 0, color: '#DCC4F3'},
-      {stop: 0.5, color: '#C0E4F9'},
-      {stop: 0.7, color: '#007CC0'},
-      {stop: 0.8, color: '#C0E4F9'},
-      {stop: 1, color: '#6EC6F6'},
+      { stop: 0, color: '#DCC4F3' },
+      { stop: 0.5, color: '#C0E4F9' },
+      { stop: 0.7, color: '#007CC0' },
+      { stop: 0.8, color: '#C0E4F9' },
+      { stop: 1, color: '#6EC6F6' },
     ];
     const materialForClothAnalysis = this.creatCanvasMaterial(canvasColorForClothAnalysis);
 
-    // 建立物件並貼材質：鑽石一========================================
+    // 建立物件並貼材質：衣物分析鑽石========================================
     const geometryForClothAnalysisTop = new THREE.ConeBufferGeometry(10, 5, 8, 1, true);
     const geometryForClothAnalysisBottom = new THREE.CylinderBufferGeometry(10, 0, 20, 8, 1, true);
     const diamondForClothAnalysis = new THREE.Object3D();
@@ -104,13 +104,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.addMeshIntoGroup(diamondForClothAnalysis, geometryForClothAnalysisBottom, materialWire, 'cloth-analysis', [0, -17.5, 0]);
     this.addDiamondGroupIntoScene(diamondForClothAnalysis, [-30, 45, 0]);
 
-    // 鑽石二========================================
+    // 投稿故事鑽石========================================
     // 建立材質：建立一張canvas漸層顏色材質
     const canvasColorForShareYours = [
-      {stop: 0, color: '#EEF4BA'},
-      {stop: 0.5, color: '#C0DAAF'},
-      {stop: 0.8, color: '#BBEADE'},
-      {stop: 1, color: '#F9FFE8'},
+      { stop: 0, color: '#EEF4BA' },
+      { stop: 0.5, color: '#C0DAAF' },
+      { stop: 0.8, color: '#BBEADE' },
+      { stop: 1, color: '#F9FFE8' },
     ];
     const materialForShareYours = this.creatCanvasMaterial(canvasColorForShareYours);
 
@@ -125,13 +125,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.addMeshIntoGroup(diamondForShareYours, geometryForShareYoursBottom, materialWire, 'share-yours', [0, -10, 0]);
     this.addDiamondGroupIntoScene(diamondForShareYours, [60, 10, 0]);
 
-    // 鑽石三========================================
+    // 隨機搭配鑽石========================================
     // 建立材質：建立一張canvas漸層顏色材質
     const canvasColorForRandomMatch = [
-      {stop: 0, color: '#CCE0EB'},
-      {stop: 0.5, color: '#60BCC1'},
-      {stop: 0.8, color: '#C1EAD3'},
-      {stop: 1, color: '#6ABFCB'},
+      { stop: 0, color: '#CCE0EB' },
+      { stop: 0.5, color: '#60BCC1' },
+      { stop: 0.8, color: '#C1EAD3' },
+      { stop: 1, color: '#6ABFCB' },
     ];
     const materialForRandomMatch = this.creatCanvasMaterial(canvasColorForRandomMatch);
 
@@ -150,19 +150,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.addDiamondGroupIntoScene(diamondForRandomMatch, [20, 35, 0]);
 
 
-    // 鑽石四========================================
+    // 詳細故事鑽石========================================
     // 建立材質：建立一張canvas漸層顏色材質
     const canvasColorForAllStory = [
-      {stop: 0, color: '#FAE6E9'},
-      {stop: 0.5, color: '#DDA2B1'},
-      {stop: 0.8, color: '#DCD1E8'},
-      {stop: 1, color: '#C9B4D7'},
+      { stop: 0, color: '#FAE6E9' },
+      { stop: 0.5, color: '#DDA2B1' },
+      { stop: 0.8, color: '#DCD1E8' },
+      { stop: 1, color: '#C9B4D7' },
     ];
     const materialForAllStory = this.creatCanvasMaterial(canvasColorForAllStory);
     // 建立物件並貼材質
     const geometryForAllStoryTop = new THREE.CylinderBufferGeometry(8, 12, 4, 8, 1);
     const geometryForAllStoryBottom = new THREE.CylinderBufferGeometry(12, 8, 4, 8, 1);
     const diamondForAllStory = new THREE.Object3D();
+    diamondForAllStory.name = 'all-story-wrap';
 
     this.addMeshIntoGroup(diamondForAllStory, geometryForAllStoryTop, materialForAllStory, 'all-story', [0, 2, 0]);
     this.addMeshIntoGroup(diamondForAllStory, geometryForAllStoryTop, materialWire, 'all-story', [0, 2, 0]);
@@ -220,56 +221,39 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   /** 2-2.建立物件加入場景：鑽石導覽列文字 */
   setDiamondNavWord() {
-
-    // 文字測試===============================================
-    const loader = new THREE.FontLoader();
-
-    loader.load('assets/fonts/HanWangHeiLight_Regular.json', font => {
-      console.log('font', font);
-      const textGeometry1 = new THREE.TextGeometry('詳細故事', {
-        font: font,
-        size: 2,
-        height: 0,
-      });
-      const textGeometry2 = new THREE.TextGeometry('衣物分析', {
-        font: font,
-        size: 2,
-        height: 0,
-      });
-      const textGeometry3 = new THREE.TextGeometry('隨機搭配', {
-        font: font,
-        size: 2,
-        height: 0,
-      });
-      const textGeometry4 = new THREE.TextGeometry('投稿故事', {
-        font: font,
-        size: 2,
-        height: 0,
-      });
+    const textLoader = new THREE.FontLoader();
+    textLoader.load('assets/fonts/HanWangHeiLight_Regular.json', font => {
+      // console.log('font', font);
+      // 文字共用材質
       const textMaterial = new THREE.MeshPhongMaterial(
         { color: 0xff0000, specular: 0xffffff }
       );
-      const meshText1 = new THREE.Mesh(textGeometry1, textMaterial);
-      meshText1.position.set(-60, -10, 20);
-      const meshText2 = new THREE.Mesh(textGeometry2, textMaterial);
-      meshText2.position.set(-30, 20, 20);
-      const meshText3 = new THREE.Mesh(textGeometry3, textMaterial);
-      meshText3.position.set(20, 20, 20);
-      const meshText4 = new THREE.Mesh(textGeometry4, textMaterial);
-      meshText4.position.set(50, -10, 20);
 
-      // diamond1.position.set(-30, 50, 0);
-      // diamond2.position.set(65, 5, 0);
-      // diamond3.position.set(30, 38, 0);
-      // diamond4.position.set(-60, 0, 0);
-
-      this.scene.add(meshText1);
-      this.scene.add(meshText2);
-      this.scene.add(meshText3);
-      this.scene.add(meshText4);
-
+      this.addTextMesh('詳細故事', textMaterial, 'all-story', [-60, -10, 20], font);
+      this.addTextMesh('衣物分析', textMaterial, 'cloth-analysis', [-30, 20, 20], font);
+      this.addTextMesh('隨機搭配', textMaterial, 'random-match', [20, 20, 20], font);
+      this.addTextMesh('投稿故事', textMaterial, 'share-yours', [50, -10, 20], font);
     });
+  }
 
+  /** 2-2-(1)建立文字加入到場景
+   * @param text 文字
+   * @param material 材質
+   * @param name 命名
+   * @param position 位置
+   * @param position 字體
+   */
+  addTextMesh(text: string, material, name: string, position, font) {
+    const textGeometry = new THREE.TextGeometry(text, {
+      font: font,
+      size: 2,
+      height: 0,
+    });
+    const meshText = new THREE.Mesh(textGeometry, material);
+    meshText.position.set(position[0], position[1], position[2]);
+    meshText.name = name;
+    this.scene.add(meshText);
+    this.objects.push(meshText);
   }
 
   onMouseClick(event: MouseEvent) {
@@ -281,29 +265,27 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.raycaster.setFromCamera(this.mouse, this.camera);
     // calculate objects intersecting the picking ray
     const intersects = this.raycaster.intersectObjects(this.objects, true);
-    console.log('intersects', intersects);
-
+    // console.log('this.objects', this.objects);
+    // console.log('intersects', intersects);
 
     if (intersects[0]) {
       const selectedName = intersects[0].object.name;
       switch (selectedName) {
+        case 'all-story':
+          console.log('/all-story');
+          this.router.navigate(['/all-story']);
+          break;
         case 'cloth-analysis':
           console.log('/cloth-analysis');
           this.router.navigate(['/cloth-analysis']);
           break;
-        case 'share-yours':
-          console.log('share-yours');
-          this.router.navigate(['/share-yours']);
-          break;
         case 'random-match':
           console.log('random-match');
           this.router.navigate(['/random-match']);
-
           break;
-        case 'all-story':
-          console.log('/all-story');
-          this.router.navigate(['/all-story']);
-
+        case 'share-yours':
+          console.log('share-yours');
+          this.router.navigate(['/share-yours']);
           break;
       }
     } else {
@@ -391,7 +373,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const size = 100;
 
     // materials[0] = new THREE.PointsMaterial( { size: 35, sizeAttenuation: true, map: star, alphaTest: 0.8, transparent: false, color: 0xFFFF00 } );
-    materials[0] = new THREE.PointsMaterial( { size: 35, sizeAttenuation: true, map: star, alphaTest: 0.8, transparent: false } );
+    materials[0] = new THREE.PointsMaterial({ size: 35, sizeAttenuation: true, map: star, alphaTest: 0.8, transparent: false });
     // materials[0].color.setRGB( 1, 0, 0 );
     materials[0].color.setHex(0xFFFF00);
     const particles = new THREE.Points(geometry, materials[0]);
