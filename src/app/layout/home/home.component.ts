@@ -102,7 +102,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.addMeshIntoGroup(diamondForClothAnalysis, geometryForClothAnalysisTop, materialWire, 'cloth-analysis', [0, -5, 0]);
     this.addMeshIntoGroup(diamondForClothAnalysis, geometryForClothAnalysisBottom, materialForClothAnalysis, 'cloth-analysis', [0, -17.5, 0]);
     this.addMeshIntoGroup(diamondForClothAnalysis, geometryForClothAnalysisBottom, materialWire, 'cloth-analysis', [0, -17.5, 0]);
-    this.addDiamondGroupIntoScene(diamondForClothAnalysis, [-30, 45, 0]);
+    this.addDiamondGroupIntoScene(diamondForClothAnalysis, [-30, 47, 0]);
 
     // 投稿故事鑽石========================================
     // 建立材質：建立一張canvas漸層顏色材質
@@ -147,7 +147,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.addMeshIntoGroup(diamondForRandomMatch, geometryForRandomMatchCenter, materialWire, 'random-match', [0, 0, 0]);
     this.addMeshIntoGroup(diamondForRandomMatch, geometryForRandomMatchBottom, materialForRandomMatch, 'random-match', [0, -8.5, 0]);
     this.addMeshIntoGroup(diamondForRandomMatch, geometryForRandomMatchBottom, materialWire, 'random-match', [0, -8.5, 0]);
-    this.addDiamondGroupIntoScene(diamondForRandomMatch, [20, 35, 0]);
+    this.addDiamondGroupIntoScene(diamondForRandomMatch, [30, 35, 0]);
 
 
     // 詳細故事鑽石========================================
