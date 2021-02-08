@@ -125,7 +125,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.addMeshIntoGroup(diamondForShareYours, geometryForShareYoursTop, materialWire, 'share-yours', [0, -2.5, 0]);
     this.addMeshIntoGroup(diamondForShareYours, geometryForShareYoursBottom, materialForShareYours, 'share-yours', [0, -10, 0]);
     this.addMeshIntoGroup(diamondForShareYours, geometryForShareYoursBottom, materialWire, 'share-yours', [0, -10, 0]);
-    this.addDiamondGroupIntoScene(diamondForShareYours, 'share-yours-wrap', [60, 10, 0]);
+    this.addDiamondGroupIntoScene(diamondForShareYours, 'share-yours-wrap', [65, 5, 0]);
 
     // 隨機搭配鑽石========================================
     // 建立材質：建立一張canvas漸層顏色材質
