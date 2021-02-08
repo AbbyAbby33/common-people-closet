@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     // 3.建立繪圖器
     this.renderer = new THREE.WebGLRenderer({ antialias: true });  // 建立 WebGL 繪圖器
-    this.renderer.setClearColor('#FFDED7');  // 設定背景色
+    this.renderer.setClearColor('#F9E3BD');  // 設定背景色
     this.renderer.setSize(window.innerWidth, window.innerHeight); // 設定畫布為瀏覽器大小
     this.renderer2.appendChild(this.threeJsWrap.nativeElement, this.renderer.domElement);
 
@@ -347,40 +347,43 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (intersects[0]) {
       this.renderer2.setStyle(this.threeJsWrap.nativeElement, 'cursor', 'pointer');
       if (!this.diamondHover) {
-        this.diamondHover = intersects[0].object.name;
-        this.addStar(intersects[0].object.name);
+        const selectedName = intersects[0].object.name;
+        this.diamondHover = selectedName;
+        this.changeBackground(selectedName);
+        this.addStar();
       }
     } else {
       this.renderer2.setStyle(this.threeJsWrap.nativeElement, 'cursor', 'default');
-      this.renderer.setClearColor('#FFDED7');
       this.diamondHover = null;
+      this.renderer.setClearColor('#F9E3BD');
+      // this.renderer.setClearColor('#FFDED7');
       this.removeStar();
     }
   }
 
+  /** 改變背景顏色 */
+  changeBackground(selectedName: string) {
+    switch (selectedName) {
+      case 'all-story':
+        // colors = [ 0xDDA2B1, 0xDCD1E8, 0xFFF6A1];
+        this.renderer.setClearColor('#FFDED7');
+        break;
+      case 'cloth-analysis':
+        this.renderer.setClearColor('#C0BADD');
+        break;
+      case 'random-match':
+        this.renderer.setClearColor('#CCE0EB');
+        break;
+      case 'share-yours':
+        this.renderer.setClearColor('#B5CAA0');
+        break;
+    }
+  }
+
   /** 滑鼠hover到鑽石及文字時的動畫 */
-  addStar(selectedName: string) {
+  addStar() {
     const textureLoader = new THREE.TextureLoader();
     const star = textureLoader.load('assets/images/star.png');
-    // 1.各鑽石背景顏色
-    // switch (selectedName) {
-    //   case 'all-story':
-    //     // material.color.setHex(0xDDA2B1);
-    //     // colors = [ 0xDDA2B1, 0xDCD1E8, 0xFFF6A1];
-    //     // colors = [ 0xFFF6A1];
-    //     // colors = [ 0xDDA2B1, 0xDCD1E8];
-    //     this.renderer.setClearColor('#FAE6E9');
-    //     break;
-    //   case 'cloth-analysis':
-    //     this.renderer.setClearColor('#E0CCEA');
-    //     break;
-    //   case 'random-match':
-    //     this.renderer.setClearColor('#CCE0EB');
-    //     break;
-    //   case 'share-yours':
-    //     this.renderer.setClearColor('#C0DAAF');
-    //     break;
-    // }
 
     const geometry = new THREE.BufferGeometry();
     const material = new THREE.PointsMaterial({ size: 5, sizeAttenuation: true, map: star, alphaTest: 0.8, transparent: false, color: 0xFFF6A1 });
@@ -388,35 +391,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
     // material = new THREE.PointsMaterial({ size: 35, sizeAttenuation: true, map: star, alphaTest: 0.8, transparent: false, color: 0xFFFF00 });
     // material.color.setHex(0xFFFF00);
     // materials[0].color.setRGB( 1, 0, 0 );
-    // 星星位置，three是3個為一組控制的
-    const vertices = this.newStarPosition();
+    // 星星位置，three是3個一組控制的
+    const vertices = this.newStarPosition(800);
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
 
     const particles = new THREE.Points(geometry, material);
     particles.name = 'star-group';
     this.scene.add(particles);
-
     // this.camera.updateProjectionMatrix();
     console.log('this.scene', this.scene);
   }
 
   /** 不同顏色弄不同群組控制：需要不同位置 */
-  newStarPosition() {
+  newStarPosition(starNum: number) {
     const vertices = [];
-    const starNum = 800;
     for (let i = 0; i < starNum; i++) {
-      // let x = Math.random() * 400;
-      // let y = Math.random() * 150;
-      // // const z = Math.random() * 400 - 500; // 讓星星在比較後面
-      // if (i < starNum / 4) {
-      //   x = -x;
-      // } else if (starNum / 4 <= i && i < starNum / 4 * 2) {
-      //   y = -y;
-      // } else if (starNum / 4 * 2 <= i && i < starNum / 4 * 3) {
-      //   x = -x;
-      //   y = -y;
-      // }
-
       let x = Math.random() * 100;
       let y = Math.random() * 150;
       let z = Math.random() * 100;
@@ -436,12 +425,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
       vertices.push(x, y, z);
     }
     // console.log('vertices', vertices);
-    // console.log((100 / 4 * 4) - (100 / 8));
     return vertices;
   }
 
+  /** 移除星星 */
   removeStar() {
-    // this.scene.getObjectByName('star-group').dispose();
     const starGroup = this.scene.getObjectByName('star-group');
     this.scene.remove(starGroup);
   }
