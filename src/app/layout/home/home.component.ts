@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.addSvgIconService.addSvgIcon('face_home_no_mouth');
     this.addSvgIconService.addSvgIcon('heart');
     this.addSvgIconService.addSvgIcon('logo');
+    this.addSvgIconService.addSvgIcon('face_close_eyes');
   }
 
   /** 1.建立threeJS基本元素 */
@@ -392,7 +393,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     // material.color.setHex(0xFFFF00);
     // materials[0].color.setRGB( 1, 0, 0 );
     // 星星位置，three是3個一組控制的
-    const vertices = this.newStarPosition(800);
+    const vertices = this.newStarPosition(1000);
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
 
     const particles = new THREE.Points(geometry, material);
@@ -406,9 +407,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   newStarPosition(starNum: number) {
     const vertices = [];
     for (let i = 0; i < starNum; i++) {
-      let x = Math.random() * 100;
+      let x = Math.random() * 150;
       let y = Math.random() * 150;
-      let z = Math.random() * 100;
+      let z = Math.random() * 150;
       if (i < starNum / 4) {                                      // 0-25
         x = -x;
         if (i < (starNum / 4) - (starNum / 8)) { z = -z; }

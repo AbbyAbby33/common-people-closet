@@ -37,17 +37,16 @@
       }
     }
     // 標題
-    .title {
-      > div {
+    div.word-area {
+      > div.title-wrap {
         margin: 10px 0 5px;
         color: #b63636;
-
         mat-icon {
           width: 38px;
           height: auto;
           // vertical-align: baseline;
           display: inline-block;
-          padding-right: 8px;
+          margin-right: 8px;
         }
         h1 {
           font-size: 50px;
@@ -57,6 +56,35 @@
       }
       > p {
         font-size: 18px;
+      }
+      > div.face-notice-wrap {
+        mat-icon {
+          width: 40px;
+          height: 40px;
+          // vertical-align: baseline;
+          display: inline-block;
+          margin-right: 8px;
+          background-color: gray;
+          padding: 10px;
+          border-radius: 50%;
+        }
+        .notice-word {
+          display: inline-block;
+          height: 60px;
+          vertical-align: top;
+          position: relative;
+          background-color: yellow;
+          width: calc(100% - 80px);
+          p {
+            background-color: #fff;
+            position: relative;
+            top: 50%;
+            transform: translate(0, -50%);
+            // padding: 10px;
+            // font-size: 18px;
+            // border-radius: 50%;
+          }
+        }
       }
     }
   }
