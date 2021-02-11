@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2 } fr
 import { AddSvgIconService } from '@app/core/service-front/add-svg-icon.service';
 import * as THREE from 'three';
 import { Router } from '@angular/router';
+import Typewriter from 't-writer.js'
 
 @Component({
   selector: 'cpc-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('threeJsWrap') threeJsWrap: ElementRef;
   @ViewChild('heartLeft') heartLeft: ElementRef;
   @ViewChild('heartRight') heartRight: ElementRef;
+  @ViewChild('operateGuideWord') operateGuideWord: ElementRef;
 
   scene;
   camera;
@@ -35,6 +37,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initView();
+    this.operateGuide();
   }
 
   /** 加入svg */
@@ -433,6 +436,20 @@ export class HomeComponent implements OnInit, AfterViewInit {
   removeStar() {
     const starGroup = this.scene.getObjectByName('star-group');
     this.scene.remove(starGroup);
+  }
+
+  /** 操作引導 */
+  operateGuide() {
+    const writer = new Typewriter(this.operateGuideWord.nativeElement, {
+      loop: true,
+      typeSpeed: 200,
+      // typeColor: 'blue'
+    });
+
+    writer
+      .type('滑鼠移動到衣物分析的鑽石試試')
+      .rest(500)
+      .start();
   }
 
 }
