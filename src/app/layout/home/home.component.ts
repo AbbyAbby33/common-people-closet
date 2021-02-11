@@ -321,8 +321,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   /** 滑鼠移動 */
   onMouseMove(event: MouseEvent) {
     // 1. 眼睛動畫
-    // 眼睛移動範圍：上下10-21%(11%)，左右30-36%(6%)
-    const eyesPositionY = 10 + (event.pageY / window.innerHeight) * 11 + '%';
+    // 眼睛移動範圍：上下6-13%(7%)，左右30-36%(6%)
+    const eyesPositionY = 6 + (event.pageY / window.innerHeight) * 7 + '%';
     const eyesPositionXLeft = 30 + (event.pageX / window.innerWidth) * 6 + '%';
     const eyesPositionXRight = 36 - (event.pageX / window.innerWidth) * 6 + '%';
 
@@ -400,7 +400,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     particles.name = 'star-group';
     this.scene.add(particles);
     // this.camera.updateProjectionMatrix();
-    console.log('this.scene', this.scene);
+    // console.log('this.scene', this.scene);
   }
 
   /** 不同顏色弄不同群組控制：需要不同位置 */

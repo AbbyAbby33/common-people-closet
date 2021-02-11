@@ -22,7 +22,7 @@
       // border: 1px solid black;
       position: absolute;
       width: 5%;
-      top: 14%;
+      top: 7%;
       &.heart-wrap-left {
         left: 31%;
       }
@@ -37,7 +37,7 @@
       }
     }
     // 標題
-    div.word-area {
+    div.title-word-area {
       > div.title-wrap {
         margin: 10px 0 5px;
         color: #b63636;
@@ -57,33 +57,43 @@
       > p {
         font-size: 18px;
       }
-      > div.face-notice-wrap {
-        mat-icon {
-          width: 40px;
-          height: 40px;
-          // vertical-align: baseline;
-          display: inline-block;
-          margin-right: 8px;
-          background-color: gray;
-          padding: 10px;
-          border-radius: 50%;
+    }
+    // 人臉提示
+    div.face-notice-wrap {
+      mat-icon {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        margin-right: 20px;
+        background-color: #FFD071;
+        padding: 10px;
+        border-radius: 50%;
+      }
+      .notice-word {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        background-color: rgba(255, 255, 255, .5);
+        width: calc(100% - 80px);
+        border-radius: 5px;
+        // 對話框三角形
+        ::after {
+          content: "";
+          display: block;
+          width: 0;
+          height: 0;
+          position: absolute;
+          left: -20px;
+          top: 50%;
+          transform: translate(0, -50%);
+          border: 10px solid #fff;
+          border-color: transparent rgba(255, 255, 255, .5) transparent transparent;
         }
-        .notice-word {
-          display: inline-block;
-          height: 60px;
-          vertical-align: top;
+        p {
           position: relative;
-          background-color: yellow;
-          width: calc(100% - 80px);
-          p {
-            background-color: #fff;
-            position: relative;
-            top: 50%;
-            transform: translate(0, -50%);
-            // padding: 10px;
-            // font-size: 18px;
-            // border-radius: 50%;
-          }
+          padding: 12px;
+          margin: 0;
+          font-size: 16px;
         }
       }
     }
