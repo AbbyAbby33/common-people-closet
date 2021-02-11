@@ -452,6 +452,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       // .type('你注意到遠景及近景分布的星星了嗎？<br/>用Math.random()安排分布在8個象限中的星星，因此每次都會在不同位置')
       // .type('移動到不同的鑽石試試')
       // .type('現在隨意移動滑鼠，注意到人臉的眼睛跟隨了嗎？')
+      // .type('點擊詳細故事！我們去第一個分頁瞧瞧！')
       .rest(5000)
       .start();
   }
