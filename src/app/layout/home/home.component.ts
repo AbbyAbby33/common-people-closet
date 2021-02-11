@@ -443,12 +443,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const writer = new Typewriter(this.operateGuideWord.nativeElement, {
       loop: true,
       typeSpeed: 200,
-      // typeColor: 'blue'
+      // typeSpeed: 20,
+      // typeColor: 'blue',
     });
 
     writer
-      .type('滑鼠移動到衣物分析的鑽石試試')
-      .rest(500)
+      .type('這是用threeJS創造的3D空間場景！滑鼠移動到衣物分析的鑽石試試！')
+      // .type('你注意到遠景及近景分布的星星了嗎？<br/>用Math.random()安排分布在8個象限中的星星，因此每次都會在不同位置')
+      // .type('移動到不同的鑽石試試')
+      // .type('現在隨意移動滑鼠，注意到人臉的眼睛跟隨了嗎？')
+      .rest(5000)
       .start();
   }
 
