@@ -60,46 +60,5 @@
         font-size: 18px;
       }
     }
-    // 人臉提示
-    div.face-notice-wrap {
-      mat-icon {
-        width: 40px;
-        height: 40px;
-        display: inline-block;
-        margin-right: 20px;
-        background-color: #FFD071;
-        padding: 10px;
-        border-radius: 50%;
-      }
-      .notice-word {
-        display: inline-block;
-        vertical-align: top;
-        position: relative;
-        background-color: $color_three;
-        width: calc(100% - 80px);
-        border-radius: 5px;
-        // 對話框三角形
-        ::after {
-          content: "";
-          display: block;
-          width: 0;
-          height: 0;
-          position: absolute;
-          left: -20px;
-          top: 50%;
-          transform: translate(0, -50%);
-          border: 10px solid #fff;
-          border-color: transparent $color_three transparent transparent;
-        }
-        p {
-          position: relative;
-          padding: 12px;
-          margin: 0;
-          font-size: 16px;
-          text-align: left;
-          line-height: 24px;
-        }
-      }
-    }
   }
 }
