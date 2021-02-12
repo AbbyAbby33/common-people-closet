@@ -1,3 +1,5 @@
+@import "../../../assets/style/_var.scss";
+
 .home-wrap {
   position: relative;
   .face-wrap {
@@ -12,7 +14,7 @@
     width: 650px;
     // 面孔
     mat-icon.face-home {
-      color: #e0a4a4;
+      color: $color_five;
       width: 50%;
       height: auto;
       // border: 1px solid black;
@@ -31,7 +33,7 @@
       }
       mat-icon {
         // border: 1px solid black;
-        color: #db2b28;
+        color: $color_six;
         width: 100%;
         height: auto;
       }
@@ -40,7 +42,7 @@
     div.title-word-area {
       > div.title-wrap {
         margin: 10px 0 5px;
-        color: #b63636;
+        color: $color_seven;
         mat-icon {
           width: 38px;
           height: auto;
@@ -73,7 +75,7 @@
         display: inline-block;
         vertical-align: top;
         position: relative;
-        background-color: rgba(255, 255, 255, .5);
+        background-color: $color_three;
         width: calc(100% - 80px);
         border-radius: 5px;
         // 對話框三角形
@@ -87,7 +89,7 @@
           top: 50%;
           transform: translate(0, -50%);
           border: 10px solid #fff;
-          border-color: transparent rgba(255, 255, 255, .5) transparent transparent;
+          border-color: transparent $color_three transparent transparent;
         }
         p {
           position: relative;

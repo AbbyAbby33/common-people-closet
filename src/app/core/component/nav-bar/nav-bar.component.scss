@@ -4,18 +4,21 @@
   text-align: center;
   background-color: $color_two;
   position: absolute;
+  width: 100%;
   li {
     display: inline-block;
     line-height: 50px;
     font-size: 20px;
+    margin: 8px 16px;
     a {
       text-decoration: none;
       span {
-        margin: 8px 16px;
-        color: $color_word;
+        // margin: 8px 16px;
+        color: $color_word_one;
       }
+      // icon 圈圈的顏色
       span.nav-icon {
-        background-color: $color_one;
+        background-color: $color_five;
         display: inline-block;
         width: 60px;
         height: 60px;
@@ -25,7 +28,7 @@
         mat-icon {
           width: 40px;
           height: 40px;
-          color: black;
+          color: $color_seven;
           vertical-align: bottom;
         }
       }
