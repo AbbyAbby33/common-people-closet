@@ -324,8 +324,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   /** 滑鼠移動 */
   onMouseMove(event: MouseEvent) {
     // 1. 眼睛動畫
-    // 眼睛移動範圍：上下6-13%(7%)，左右30-36%(6%)
-    const eyesPositionY = 6 + (event.pageY / window.innerHeight) * 7 + '%';
+    // 眼睛移動範圍：上下7-13%(6%)，左右30-36%(6%)
+    const eyesPositionY = 7 + (event.pageY / window.innerHeight) * 6 + '%';
     const eyesPositionXLeft = 30 + (event.pageX / window.innerWidth) * 6 + '%';
     const eyesPositionXRight = 36 - (event.pageX / window.innerWidth) * 6 + '%';
 
