@@ -7,6 +7,7 @@ import { SharedModule } from '@shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarModule } from '@core/component/nav-bar/nav-bar.module';
 import { HomeModule } from '@layout/home/home.module';
+import { FaceOperateGuideModule } from '@core/component/face-operate-guide/face-operate-guide.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeModule } from '@layout/home/home.module';
     HttpClientModule,
     NavBarModule,
     BrowserAnimationsModule,
-    HomeModule
+    HomeModule,
+    FaceOperateGuideModule,
   ],
   providers: [],
   bootstrap: [
