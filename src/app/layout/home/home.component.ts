@@ -384,7 +384,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   /** 滑鼠hover到鑽石及文字時的動畫 */
   addStar() {
     const textureLoader = new THREE.TextureLoader();
-    const star = textureLoader.load('assets/images/star.png');
+    const star = textureLoader.load('assets/images/icon/star.png');
 
     const geometry = new THREE.BufferGeometry();
     const material = new THREE.PointsMaterial({ size: 5, sizeAttenuation: true, map: star, alphaTest: 0.8, transparent: false, color: 0xFFF6A1 });

@@ -1,8 +1,11 @@
+@import "../assets/style/_var.scss";
+
 .app-wrap {
   // position: relative;
   .cpc-face-operate-guide {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
+    position: fixed;
+    bottom: $spacing_between_item_and_page;
+    left: $spacing_between_item_and_page;
+    margin-right: $spacing_between_item_and_page;
   }
 }

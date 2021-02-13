@@ -15,7 +15,8 @@ div.face-notice-wrap {
     display: inline-block;
     vertical-align: top;
     position: relative;
-    background-color: $color_three;
+    background-color: $color_two;
+    // background-color: #fff;
     width: calc(100% - 80px);
     border-radius: 5px;
     // 對話框三角形
@@ -29,7 +30,7 @@ div.face-notice-wrap {
       top: 50%;
       transform: translate(0, -50%);
       border: 10px solid #fff;
-      border-color: transparent $color_three transparent transparent;
+      border-color: transparent $color_two transparent transparent;
     }
     p {
       position: relative;

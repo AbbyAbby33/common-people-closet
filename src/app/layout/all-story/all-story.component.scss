@@ -1,0 +1,23 @@
+.all-story-wrap {
+	width: 100%;
+	max-width: 1200px;
+  margin: 0 auto;
+  // height: 1500px;
+  background-color: yellow;
+  padding: 76px 8px 0;
+  .page-title {
+    text-align: center;
+    margin: 16px 0;
+  }
+  .cloth-item {
+    width: 25%;
+    background-color: gray;
+    padding: 8px;
+    box-sizing: border-box;
+    display: inline-block;
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}
