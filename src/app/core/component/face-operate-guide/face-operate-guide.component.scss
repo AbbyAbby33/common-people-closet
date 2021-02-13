@@ -16,8 +16,10 @@ div.face-notice-wrap {
     vertical-align: top;
     position: relative;
     background-color: $color_three;
+    // background-color: #fff;
     width: calc(100% - 80px);
     border-radius: 5px;
+    z-index: 20;
     // 對話框三角形
     ::after {
       content: "";
