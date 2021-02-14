@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/style/reset.css";
 @import "./assets/style/_var.scss";
+@import "./assets/style/adjust.scss";
 
 html,
 body {
@@ -10,9 +11,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: $color_background;
   color: $color_word_one;
-  .mat-table {
-    width: 100%;
-  }
 }
 
 /* Responsive Styles */
