@@ -1,7 +1,6 @@
+@import "../../../assets/style/_var.scss";
+
 .all-story-wrap {
-	width: 100%;
-	max-width: 1600px;
-  margin: 0 auto;
+  @include page_layout_base;
   // background-color: yellow;
-  padding: 76px 24px 0;
 }

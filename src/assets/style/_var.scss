@@ -16,3 +16,12 @@ $color_word_one: rgba(0, 0, 0, .8);
 
 
 $spacing_between_item_and_page: 24px;
+
+
+
+@mixin page_layout_base {
+	width: 100%;
+	max-width: 1600px;
+  margin: 0 auto;
+  padding: 76px 24px 0
+}
