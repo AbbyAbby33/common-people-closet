@@ -1,23 +1,30 @@
 .all-story-wrap {
 	width: 100%;
-	max-width: 1200px;
+	max-width: 1600px;
   margin: 0 auto;
   // height: 1500px;
-  background-color: yellow;
-  padding: 76px 8px 0;
+  // background-color: yellow;
+  padding: 76px 24px 0;
   .page-title {
     text-align: center;
     margin: 16px 0;
   }
   .cloth-item {
     width: 25%;
-    background-color: gray;
-    padding: 8px;
+    // background-color: gray;
+    padding: 8px 24px;
     box-sizing: border-box;
     display: inline-block;
     img {
       width: 100%;
       margin: 0 auto;
+      clip-path: polygon(75% 0, 100% 30%, 50% 90%, 0 30%, 25% 0);
+      // clip-path: polygon(25% 0%, 75% 0%, 100% 30%, 50% 80%, 0 30%);
+      transition: clip-path .5s ease;
+      cursor: pointer;
+      &:hover {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0.01%);   // 頂點數量與一開始不同不會有transition效果
+      }
     }
   }
 }
