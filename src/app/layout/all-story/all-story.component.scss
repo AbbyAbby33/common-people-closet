@@ -16,6 +16,7 @@
     padding: 8px 24px;
     box-sizing: border-box;
     display: inline-block;
+    position: relative;
     img {
       width: 100%;
       margin: 0 auto;
@@ -26,6 +27,17 @@
       &:hover {
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0.01%);   // 頂點數量與一開始不同不會有transition效果
       }
+    }
+    h2 {
+      position: absolute;
+      top: 10%;
+      // right: 0;
+      right: 10%;
+      font-size: 18px;
+      line-height: 18px;
+      background-color: rgba(255, 255, 255, .8);
+      padding: 4px;
+      border-radius: 4px;
     }
   }
 }
