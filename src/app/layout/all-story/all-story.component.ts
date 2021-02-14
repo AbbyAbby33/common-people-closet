@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllStoryComponent implements OnInit {
 
+  clothList = [
+    {},
+    {},
+    {},
+    {},
+  ];
+
   constructor() { }
 
   ngOnInit(): void {

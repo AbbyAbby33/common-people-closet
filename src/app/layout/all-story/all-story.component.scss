@@ -10,34 +10,4 @@
     margin: 40px 0 24px;
     font-weight: bold;
   }
-  .cloth-item {
-    width: 25%;
-    // background-color: gray;
-    padding: 8px 24px;
-    box-sizing: border-box;
-    display: inline-block;
-    position: relative;
-    img {
-      width: 100%;
-      margin: 0 auto;
-      clip-path: polygon(75% 0, 100% 30%, 50% 90%, 0 30%, 25% 0);
-      // clip-path: polygon(25% 0%, 75% 0%, 100% 30%, 50% 80%, 0 30%);
-      transition: clip-path .5s ease-in-out;
-      cursor: pointer;
-      &:hover {
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0.01%);   // 頂點數量與一開始不同不會有transition效果
-      }
-    }
-    h2 {
-      position: absolute;
-      top: 10%;
-      // right: 0;
-      right: 10%;
-      font-size: 18px;
-      line-height: 18px;
-      background-color: rgba(255, 255, 255, .8);
-      padding: 4px;
-      border-radius: 4px;
-    }
-  }
 }
