@@ -7,7 +7,8 @@
   padding: 76px 24px 0;
   .page-title {
     text-align: center;
-    margin: 16px 0;
+    margin: 40px 0 24px;
+    font-weight: bold;
   }
   .cloth-item {
     width: 25%;
@@ -20,7 +21,7 @@
       margin: 0 auto;
       clip-path: polygon(75% 0, 100% 30%, 50% 90%, 0 30%, 25% 0);
       // clip-path: polygon(25% 0%, 75% 0%, 100% 30%, 50% 80%, 0 30%);
-      transition: clip-path .5s ease;
+      transition: clip-path .5s ease-in-out;
       cursor: pointer;
       &:hover {
         clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0.01%);   // 頂點數量與一開始不同不會有transition效果
