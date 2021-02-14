@@ -10,6 +10,9 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: $color_background;
   color: $color_word_one;
+  .mat-table {
+    width: 100%;
+  }
 }
 
 /* Responsive Styles */

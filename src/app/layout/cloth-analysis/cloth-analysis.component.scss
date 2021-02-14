@@ -3,4 +3,7 @@
 .cloth-analysis-wrap {
   @include page_layout_base;
   // background-color: yellow;
+  .mat-table {
+    // width: 100%;
+  }
 }
