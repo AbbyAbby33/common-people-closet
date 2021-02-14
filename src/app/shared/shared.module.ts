@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ClothDiamondTemplateModule } from './component/cloth-diamond-template/cloth-diamond-template.module';
+import { PageTitleModule } from './component/page-title/page-title.module';
 
 @NgModule({
   declarations: [],
@@ -11,12 +12,14 @@ import { ClothDiamondTemplateModule } from './component/cloth-diamond-template/c
     MatIconModule,
     FlexLayoutModule,
     ClothDiamondTemplateModule,
+    PageTitleModule,
   ],
   exports: [
     CommonModule,
     MatIconModule,
     FlexLayoutModule,
     ClothDiamondTemplateModule,
+    PageTitleModule,
   ],
 })
 export class SharedModule { }
