@@ -3,4 +3,22 @@
 .random-match-wrap {
   @include page_layout_base;
   // background-color: yellow;
+  .match-item-wrap {
+    // background-color: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .match-item {
+      width: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      // background-color: $color_three;
+      img {
+        width: 100%;
+        height: auto;
+        opacity: 0.6;
+      }
+    }
+  }
 }
