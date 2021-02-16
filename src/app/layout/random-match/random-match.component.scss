@@ -11,13 +11,16 @@
     transform: translate(-50%, -50%);
     .match-item {
       width: 300px;
-      border-radius: 50%;
-      overflow: hidden;
-      // background-color: $color_three;
       img {
         width: 100%;
         height: auto;
+        border-radius: 50%;
         opacity: 0.6;
+      }
+      p {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 18px;
       }
     }
   }
