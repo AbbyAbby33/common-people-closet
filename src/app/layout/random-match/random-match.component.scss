@@ -1,8 +1,15 @@
 @import "../../../assets/style/_var.scss";
 
 .random-match-wrap {
-  @include page_layout_base;
+  // @include page_layout_base;
   // background-color: yellow;
+  // 這頁title需要另外處理
+  cpc-page-title {
+    position: absolute;
+    top: 76px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
   .match-item-wrap {
     // background-color: yellow;
     position: absolute;
