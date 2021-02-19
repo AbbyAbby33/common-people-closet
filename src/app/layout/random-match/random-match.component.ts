@@ -40,7 +40,7 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
     // this.scene.fog = new THREE.FogExp2( 0xffffff, 0.001 );
 
     // 2.建立相機
-    this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
+    this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 10000);
     this.camera.position.z = 200;
     this.camera.lookAt(this.scene.position);
 
@@ -59,20 +59,23 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
   }
 
   addDiamondMesh() {
+    const diamondGroup = new THREE.Object3D();
     const diamondNum = 100;
     // 先製作位置預備
     const vertices = this.newPosition(diamondNum);
 
     // 製作鑽石
     for (let i = 0; i < diamondNum; i++) {
-      const diamond = this.createOneDiamondGroup();
+      const diamond = this.createOneDiamond();
       const positionNum = (i + 1) * 3;
       diamond.position.set(vertices[positionNum - 2], vertices[positionNum - 1], vertices[positionNum]);
-      this.scene.add(diamond);
+      diamondGroup.add(diamond);
     }
+
+    this.scene.add(diamondGroup);
   }
 
-  createOneDiamondGroup() {
+  createOneDiamond() {
     // const material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
     const materialWire = new THREE.MeshBasicMaterial({
       color: 0xffffff,
@@ -132,16 +135,13 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
 
   animate3() {
     window.requestAnimationFrame(() => this.animate3());
-    // console.log('this.scene', this.scene);
+    console.log('this.scene', this.scene);
     // console.log('this.camera', this.camera);
 
     this.camera.position.x += ( this.mouseX - this.camera.position.x ) * 0.5;
     this.camera.position.y += ( - this.mouseY - this.camera.position.y ) * 0.5;
 
-
-    // this.camera.position.x += ( this.mouseX - this.camera.position.x ) * 0.05;
-    // this.camera.position.y += ( - this.mouseY - this.camera.position.y ) * 0.05;
-
+    this.scene.children[0].rotation.y += 0.002;
 
     this.renderer.render(this.scene, this.camera);
   }
