@@ -19,6 +19,9 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
   diamondHover: string;
   objects = [];
 
+  mouseX = 0;
+  mouseY = 0;
+
   constructor(
     private renderer2: Renderer2,
   ) { }
@@ -34,10 +37,12 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
   initView() {
     // 1.建立場景
     this.scene = new THREE.Scene();
+    // this.scene.fog = new THREE.FogExp2( 0xffffff, 0.001 );
 
     // 2.建立相機
     this.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
-    this.camera.position.z = 150;
+    this.camera.position.z = 200;
+    this.camera.lookAt(this.scene.position);
 
     // 3.建立繪圖器
     this.renderer = new THREE.WebGLRenderer({ antialias: true });  // 建立 WebGL 繪圖器
@@ -47,6 +52,8 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
 
     // 4.加入threeJS物件：鑽石
     this.addDiamondMesh();
+
+    window.addEventListener('pointermove', (event) => this.onPointerMove(event), false);
 
     this.animate3();
   }
@@ -71,13 +78,13 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
       color: 0xffffff,
       wireframe: true
     });
-    const geometryTop = new THREE.CylinderBufferGeometry(5, 10, 5, 6, 1, true);
-    const geometryBottom = new THREE.CylinderBufferGeometry(10, 0, 10, 6, 1, true);
+    const geometryTop = new THREE.CylinderBufferGeometry(25, 50, 25, 6, 1, true);
+    const geometryBottom = new THREE.CylinderBufferGeometry(50, 0, 50, 6, 1, true);
     const diamond = new THREE.Object3D();
     const meshTop = new THREE.Mesh(geometryTop, materialWire);
-    meshTop.position.set(0, -2.5, 0);
+    meshTop.position.set(0, -12.5, 0);
     const meshBottom = new THREE.Mesh(geometryBottom, materialWire);
-    meshBottom.position.set(0, -10, 0);
+    meshBottom.position.set(0, -50, 0);
     diamond.add(meshTop);
     diamond.add(meshBottom);
     return diamond;
@@ -87,9 +94,9 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
   newPosition(starNum: number) {
     const vertices = [];
     for (let i = 0; i < starNum; i++) {
-      let x = Math.random() * 150;
-      let y = Math.random() * 150;
-      let z = Math.random() * 150;
+      let x = Math.random() * 800;
+      let y = Math.random() * 800;
+      let z = Math.random() * 800;
       if (i < starNum / 4) {                                      // 0-25
         x = -x;
         if (i < (starNum / 4) - (starNum / 8)) { z = -z; }
@@ -108,10 +115,33 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
     return vertices;
   }
 
+  onPointerMove(event) {
+    if ( event.isPrimary === false ) {
+      return;
+    }
+
+    const windowHalfX = window.innerWidth / 2;
+    const windowHalfY = window.innerHeight / 2;
+
+    // this.mouseX = event.clientX;
+    this.mouseX = event.clientX - windowHalfX;
+    // this.mouseY = event.clientY;
+    this.mouseY = event.clientY - windowHalfY;
+    console.log('this.mouseX', this.mouseX, 'this.mouseY', this.mouseY, this.camera.position);
+  }
+
   animate3() {
     window.requestAnimationFrame(() => this.animate3());
     // console.log('this.scene', this.scene);
     // console.log('this.camera', this.camera);
+
+    this.camera.position.x += ( this.mouseX - this.camera.position.x ) * 0.5;
+    this.camera.position.y += ( - this.mouseY - this.camera.position.y ) * 0.5;
+
+
+    // this.camera.position.x += ( this.mouseX - this.camera.position.x ) * 0.05;
+    // this.camera.position.y += ( - this.mouseY - this.camera.position.y ) * 0.05;
+
 
     this.renderer.render(this.scene, this.camera);
   }
