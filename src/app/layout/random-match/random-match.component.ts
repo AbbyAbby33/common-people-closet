@@ -135,7 +135,7 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
 
   animate3() {
     window.requestAnimationFrame(() => this.animate3());
-    console.log('this.scene', this.scene);
+    // console.log('this.scene', this.scene);
     // console.log('this.camera', this.camera);
 
     this.camera.position.x += ( this.mouseX - this.camera.position.x ) * 0.5;

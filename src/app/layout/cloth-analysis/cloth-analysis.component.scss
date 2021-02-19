@@ -5,5 +5,11 @@
   // background-color: yellow;
   .mat-table {
     // width: 100%;
+    .mat-column-index {
+      width: 100px;
+      mat-checkbox {
+        padding-right: 8px;
+      }
+    }
   }
 }

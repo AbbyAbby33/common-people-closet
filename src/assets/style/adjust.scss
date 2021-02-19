@@ -5,8 +5,16 @@ body {
   .mat-table {
     width: 100%;
     text-align: center;
-    th.mat-header-cell {
-      text-align: center;
+    tr.mat-header-row {
+      height: auto;
+      line-height: 45px;
+      th.mat-header-cell {
+        text-align: center;
+      }
+    }
+    tr.mat-row, tr.mat-footer-row {
+      height: auto;
+      line-height: 45px;
     }
   }
 }
