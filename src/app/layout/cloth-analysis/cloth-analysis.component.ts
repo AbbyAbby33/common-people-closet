@@ -9,7 +9,7 @@ export class ClothAnalysisComponent implements OnInit {
 
   length = 60;
 
-  displayedColumns: string[] = ['index', 'name', 'material', 'dressing-frequency', 'story', 'type', 'login-date'];
+  displayedColumns: string[] = ['index', 'name', 'material', 'preference', 'story', 'type', 'login-date'];
 
   dataSource = ELEMENT_DATA;
 
