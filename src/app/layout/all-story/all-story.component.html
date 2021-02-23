@@ -3,4 +3,22 @@
   <ng-container *ngFor="let clothItem of clothList">
     <cpc-cloth-diamond-template></cpc-cloth-diamond-template>
   </ng-container>
+
+  <ul class="nav cpc-nav-pills-wrap">
+    <li class="cpc-nav-pills">
+      <a (click)="onPageClick($event, 'pre')">
+        <mat-icon>chevron_left</mat-icon>
+      </a>
+    </li>
+    <li class="cpc-nav-pills" *ngFor="let p of pageNumList">
+      <a class="nav-link" (click)="onPageClick($event, p.pageNum)" [ngClass]="{'active': p.pageNum===page}">
+        {{ p.pageNum }}
+      </a>
+    </li>
+    <li class="cpc-nav-pills">
+      <a (click)="onPageClick($event, 'next')">
+        <mat-icon>chevron_right</mat-icon>
+      </a>
+    </li>
+  </ul>
 </section>
