@@ -1,6 +1,6 @@
 <section class="all-story-wrap">
   <cpc-page-title [pageTitleName]="'詳細故事'"></cpc-page-title>
-  <ng-container *ngFor="let clothItem of clothList">
+  <ng-container *ngFor="let clothItem of clothListThisPage">
     <cpc-cloth-diamond-template></cpc-cloth-diamond-template>
   </ng-container>
 
@@ -11,7 +11,7 @@
       </a>
     </li>
     <li class="cpc-nav-pills" *ngFor="let p of pageNumList">
-      <a class="nav-link" (click)="onPageClick($event, p.pageNum)" [ngClass]="{'active': p.pageNum===page}">
+      <a class="nav-link" (click)="onPageClick($event, p.pageNum)" [ngClass]="{'active': p.pageNum === ( pageIndex + 1 )}">
         {{ p.pageNum }}
       </a>
     </li>

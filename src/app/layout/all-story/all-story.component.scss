@@ -2,6 +2,7 @@
 
 .all-story-wrap {
   @include page_layout_base;
+  padding-bottom: 40px;
   // background-color: yellow;
 
   .cpc-nav-pills-wrap {
