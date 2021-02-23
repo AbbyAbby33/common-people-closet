@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'cpc-cloth-diamond-template',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClothDiamondTemplateComponent implements OnInit {
 
+  @Input() clothItemInfo;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log('this.clothItemInfo', this.clothItemInfo);
   }
 
 }
