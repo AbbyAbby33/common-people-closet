@@ -11,5 +11,16 @@
         padding-right: 8px;
       }
     }
+    .mat-column-preference {
+      mat-icon {
+        width: 18px;
+        font-size: 16px;
+      }
+    }
+    .mat-column-story {
+      mat-icon {
+        cursor: pointer;
+      }
+    }
   }
 }

@@ -27,7 +27,8 @@ export class ClothAnalysisComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.getClothInfo();
+    /** setTimeout：避免ExpressionChangedAfterItHasBeenCheckedError，真實串API的時候就不需要setTimeout */
+    setTimeout(() => this.getClothInfo(), 0);
   }
 
   /** 取得衣物資訊 */
@@ -35,7 +36,19 @@ export class ClothAnalysisComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.data = this.clothInfoApiService.getClothInfo();
     this.length = this.clothInfoApiService.getClothInfo().length;
+    this.setPreference();
     // console.log('this.dataSource', this.dataSource);
+  }
+
+  setPreference() {
+    this.dataSource.data.forEach(clothInfo => {
+      const preferenceAry = [];
+      for (let i = 0 ; i < clothInfo.preference; i++) {
+        preferenceAry.push('o');
+      }
+      clothInfo.preferenceAry = preferenceAry;
+    });
+    console.log(this.dataSource.data);
   }
 
   /** 換頁 */
