@@ -5,7 +5,13 @@ import { AllStoryComponent } from './all-story.component';
 const routes: Routes = [
   {
     path: '',
-    component: AllStoryComponent
+    component: AllStoryComponent,
+    // children: [
+    //   {
+    //     path: 'cloth-story', // child route path
+    //     loadChildren: () => import('../cloth-story/cloth-story.module').then(m => m.ClothStoryModule),
+    //   },
+    // ]
   }
 ];
 

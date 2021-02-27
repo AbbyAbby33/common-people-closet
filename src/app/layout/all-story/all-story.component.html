@@ -1,7 +1,10 @@
 <section class="all-story-wrap">
   <cpc-page-title [pageTitleName]="'詳細故事'"></cpc-page-title>
   <ng-container *ngFor="let clothItem of clothListThisPage">
+  <a routerLink="/cloth-story" routerLinkActive="active">
+
     <cpc-cloth-diamond-template [clothItemInfo]="clothItem"></cpc-cloth-diamond-template>
+    </a>
   </ng-container>
 
   <ul class="nav cpc-nav-pills-wrap">

@@ -24,6 +24,11 @@ const routes: Routes = [
     loadChildren: () => import('./layout/share-yours/share-yours.module').then(m => m.ShareYoursModule),
   },
   {
+    // 衣物故事
+    path: 'cloth-story', // child route path
+    loadChildren: () => import('./layout/cloth-story/cloth-story.module').then(m => m.ClothStoryModule),
+  },
+  {
     // 首頁
     path: '',
     component: HomeComponent,
