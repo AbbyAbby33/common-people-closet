@@ -7,18 +7,18 @@
   </ng-container>
 
   <ul class="nav cpc-nav-pills-wrap">
-    <li class="cpc-nav-pills">
-      <a (click)="onPageClick($event, 'pre')">
+    <li class="cpc-nav-pills" (click)="onPageClick($event, 'pre')">
+      <a>
         <mat-icon>chevron_left</mat-icon>
       </a>
     </li>
-    <li class="cpc-nav-pills" *ngFor="let p of pageNumList">
-      <a class="nav-link" (click)="onPageClick($event, p.pageNum)" [ngClass]="{'active': p.pageNum === ( pageIndex + 1 )}">
+    <li class="cpc-nav-pills" *ngFor="let p of pageNumList" (click)="onPageClick($event, p.pageNum)">
+      <a class="nav-link" [ngClass]="{'active': p.pageNum === ( pageIndex + 1 )}">
         {{ p.pageNum }}
       </a>
     </li>
-    <li class="cpc-nav-pills">
-      <a (click)="onPageClick($event, 'next')">
+    <li class="cpc-nav-pills" (click)="onPageClick($event, 'next')">
+      <a>
         <mat-icon>chevron_right</mat-icon>
       </a>
     </li>
