@@ -42,6 +42,10 @@ $spacing_between_image: 20px;
       margin: 40px 0;
       // background-color: gray;
     }
+    p:first-child {
+      border-top: 1px solid $color_border_one;
+      padding-top: 10px;
+    }
     // 圖片
 
     .content-img-wrap {
