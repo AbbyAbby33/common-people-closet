@@ -42,7 +42,9 @@
     <ng-container matColumnDef="story">
       <th mat-header-cell *matHeaderCellDef>衣物故事</th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon>auto_stories</mat-icon>
+        <a routerLink="/cloth-story" routerLinkActive="active" [queryParams]="{id: element.id}">
+          <mat-icon>auto_stories</mat-icon>
+        </a>
       </td>
     </ng-container>
 
