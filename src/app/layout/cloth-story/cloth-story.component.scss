@@ -1,8 +1,11 @@
 @import "../../../assets/style/_var.scss";
 
+$spacing_between_image: 20px;
+
 .cloth-story-wrap {
   @include page_layout_base;
   // background-color: yellow;
+  padding-bottom: 100px;
   .main-info-area {
     background-color: $color_three;
     position: relative;
@@ -14,7 +17,7 @@
       img {
         width: 100%;
         height: auto;
-        vertical-align: bottom;   // 去掉那個4px！
+        vertical-align: bottom; // 去掉那個4px！
       }
     }
     > div:last-child {
@@ -27,15 +30,36 @@
         // background-color: pink;
         width: 60%;
         margin: 0 auto;
-        p {
-          text-align: center;
-          font-size: 16px;
-        }
+        text-align: center;
+        font-size: 16px;
       }
     }
   }
 
   .story-area {
+    // 段落文字
+    p {
+      margin: 40px 0;
+      // background-color: gray;
+    }
+    // 圖片
 
+    .content-img-wrap {
+      width: 100%;
+      border-left: 1px solid $color_border_one;
+      border-right: 1px solid $color_border_one;
+      padding-left: $spacing_between_image;
+      padding-right: $spacing_between_image;
+      // background-color: yellow;
+
+      > div {
+        // background-color: pink;
+        padding: 0 $spacing_between_image;
+        > img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
   }
 }
