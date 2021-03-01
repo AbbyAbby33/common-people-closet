@@ -12,8 +12,17 @@
       <div>
         <h2>{{ clothInfo.name }}</h2>
         <p>{{ clothInfo.material }}</p>
-        <p>{{ clothInfo.preference }}</p> <!-- TODO: 轉成愛心 -->
-        <p>{{ clothInfo.type }}</p> <!-- TODO: 轉成類型文字 -->
+        <p>
+          <ng-container *ngFor="let i of clothInfo.preferenceAry">
+            <mat-icon>favorite</mat-icon>
+          </ng-container>
+        </p>
+        <p>
+          <ng-container *ngIf="clothInfo.type === 1">上身</ng-container>
+          <ng-container *ngIf="clothInfo.type === 2">下身</ng-container>
+          <ng-container *ngIf="clothInfo.type === 3">外套</ng-container>
+          <ng-container *ngIf="clothInfo.type === 4">配件</ng-container>
+        </p>
         <p>{{ clothInfo.loginDate }}</p>
       </div>
     </div>

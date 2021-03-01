@@ -27,12 +27,23 @@ export class ClothStoryComponent implements OnInit {
 
   getClothInfoById(clothId: string) {
     this.clothInfo = this.clothInfoApiService.getClothInfoById(clothId);
+    this.setPreference();
     // console.log('衣物分析資料this.clothInfo', this.clothInfo);
   }
 
   getClothImgListInfoById(clothId: string) {
     this.clothImgList = this.clothInfoApiService.getClothImgListInfoById(clothId);
     // console.log('衣物分析圖片this.clothImgList', this.clothImgList);
+  }
+
+  /** 喜好程度愛心 */
+  setPreference() {
+    const preferenceAry = [];
+    for (let i = 0; i < this.clothInfo.preference; i++) {
+      preferenceAry.push('o');
+    }
+    this.clothInfo.preferenceAry = preferenceAry;
+    console.log(this.clothInfo);
   }
 
 }

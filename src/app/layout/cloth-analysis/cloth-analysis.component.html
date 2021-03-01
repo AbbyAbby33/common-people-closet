@@ -49,7 +49,12 @@
     <!-- Type Column -->
     <ng-container matColumnDef="type">
       <th mat-header-cell *matHeaderCellDef>類型</th>
-      <td mat-cell *matCellDef="let element"> {{ element.type }} </td>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngIf="element.type === 1">上身</ng-container>
+        <ng-container *ngIf="element.type === 2">下身</ng-container>
+        <ng-container *ngIf="element.type === 3">外套</ng-container>
+        <ng-container *ngIf="element.type === 4">配件</ng-container>
+      </td>
     </ng-container>
 
     <!-- Login Date Column -->
