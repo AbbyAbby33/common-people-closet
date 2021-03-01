@@ -50,8 +50,8 @@ export class AllStoryComponent implements OnInit, AfterViewInit {
   /** 取得所有衣物資訊 */
   getAllClothInfo() {
     // this.dataSource.paginator = this.paginator;
-    this.dataSource.data = this.clothInfoApiService.getClothInfo();
-    this.length = this.clothInfoApiService.getClothInfo().length;
+    this.dataSource.data = this.clothInfoApiService.getAllClothInfo();
+    this.length = this.clothInfoApiService.getAllClothInfo().length;
     console.log('this.dataSource', this.dataSource);
     this.getClothListThisPage(this.pageIndex);
   }
@@ -59,7 +59,8 @@ export class AllStoryComponent implements OnInit, AfterViewInit {
   /** 取得當頁應顯示衣物資訊 */
   getClothListThisPage(pageIndex) {
     const pageSize = 12;
-    this.clothListThisPage = this.dataSource.data.slice(pageIndex * 12, (pageIndex + 1) * 12);
+    // const pageSize = 32;
+    this.clothListThisPage = this.dataSource.data.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize);
 
     // TODO: 記得處理最後一頁剩下一點點的狀況
 

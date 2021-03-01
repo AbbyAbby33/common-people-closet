@@ -12,7 +12,7 @@ export class ClothDiamondTemplateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('this.clothItemInfo', this.clothItemInfo);
+    // console.log('this.clothItemInfo', this.clothItemInfo);
   }
 
 }

@@ -28,14 +28,14 @@ export class ClothAnalysisComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     /** setTimeout：避免ExpressionChangedAfterItHasBeenCheckedError，真實串API的時候就不需要setTimeout */
-    setTimeout(() => this.getClothInfo(), 0);
+    setTimeout(() => this.getAllClothInfo(), 0);
   }
 
   /** 取得衣物資訊 */
-  getClothInfo() {
+  getAllClothInfo() {
     this.dataSource.paginator = this.paginator;
-    this.dataSource.data = this.clothInfoApiService.getClothInfo();
-    this.length = this.clothInfoApiService.getClothInfo().length;
+    this.dataSource.data = this.clothInfoApiService.getAllClothInfo();
+    this.length = this.clothInfoApiService.getAllClothInfo().length;
     this.setPreference();
     // console.log('this.dataSource', this.dataSource);
   }
