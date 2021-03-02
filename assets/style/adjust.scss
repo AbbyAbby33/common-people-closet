@@ -1,0 +1,52 @@
+/* adjust_third_party_libraries */
+
+/* Angular Material */
+body {
+  /* 表格 **/
+  .mat-table {
+    width: 100%;
+    text-align: center;
+    background-color: $color_five;
+    box-shadow: none;
+    .mat-header-cell {
+      background-color: $color_eight;
+      color: $color_word_three;
+    }
+    .mat-cell {
+      color: $color_word_one;
+      mat-icon {
+        color: $color_word_two;
+      }
+    }
+    tr.mat-header-row {
+      height: auto;
+      line-height: 45px;
+      th.mat-header-cell {
+        text-align: center;
+      }
+    }
+    tr.mat-row, tr.mat-footer-row {
+      height: auto;
+      line-height: 45px;
+    }
+  }
+
+  /** 分頁器 */
+  .mat-paginator {
+    background-color: $color_five;
+    color: $color_word_one;
+  }
+
+  /** 表單*/
+  .mat-form-field {
+    .mat-form-field-underline {
+      background-color: $color_word_one;
+    }
+    .mat-select-value {
+      color: $color_word_one;
+    }
+    .mat-select-arrow {
+      color: $color_word_one;
+    }
+  }
+}
