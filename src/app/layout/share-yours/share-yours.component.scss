@@ -3,4 +3,8 @@
 .share-yours-wrap {
   @include page_layout_base;
   // background-color: yellow;
+  .dev-text {
+    text-align: center;
+    margin-top: 200px;
+  }
 }
