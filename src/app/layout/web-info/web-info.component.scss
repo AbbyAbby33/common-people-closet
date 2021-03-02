@@ -1,6 +1,39 @@
 @import "../../../assets/style/_var.scss";
 
+$web-info-sub-title-font-size: 22px;
+$web-info-text-font-size: 18px;
+$web-info-text-line-height: 28px;
+
 .web-info-wrap {
   @include page_layout_base;
   // background-color: yellow;
+  .text-area {
+    // background-color: yellow;
+    width: 60%;
+    margin: 0 auto;
+    line-height: $web-info-text-line-height;
+    > ul {
+      > li {
+        // background-color: gray;
+        margin-bottom: 40px;
+        // font-size: $web-info-sub-title-font-size;
+        p:first-child {
+          font-size: $web-info-text-font-size;
+          line-height: $web-info-text-line-height;
+          font-weight: bold;
+          mat-icon {
+            font-size: $web-info-sub-title-font-size;
+            vertical-align: text-bottom;
+          }
+        }
+        > ul {
+          // background-color: pink;
+          padding-left: 30px;
+          > li {
+            font-size: $web-info-text-font-size;
+          }
+        }
+      }
+    }
+  }
 }
