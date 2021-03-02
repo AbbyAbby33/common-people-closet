@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2, HostListener } from '@angular/core';
 import * as THREE from 'three';
 
 @Component({
@@ -21,6 +21,13 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
 
   mouseX = 0;
   mouseY = 0;
+
+  @HostListener('pointermove', ['$event']) listenPointerMove(event: any) {
+    this.onPointerMove(event);
+  }
+  @HostListener('window:resize', ['$event']) listenWindowResize(event: any) {
+    this.onWindowResize();
+  }
 
   constructor(
     private renderer2: Renderer2,
@@ -53,8 +60,7 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
     // 4.加入threeJS物件：鑽石
     this.addDiamondMesh();
 
-    window.addEventListener('pointermove', (event) => this.onPointerMove(event), false);
-
+    // window.addEventListener('pointermove', (event) => this.onPointerMove(event), false);
     this.animate3();
   }
 
@@ -130,7 +136,13 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
     this.mouseX = event.clientX - windowHalfX;
     // this.mouseY = event.clientY;
     this.mouseY = event.clientY - windowHalfY;
-    console.log('this.mouseX', this.mouseX, 'this.mouseY', this.mouseY, this.camera.position);
+    // console.log('this.mouseX', this.mouseX, 'this.mouseY', this.mouseY, this.camera.position);
+  }
+
+  onWindowResize() {
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 
   animate3() {

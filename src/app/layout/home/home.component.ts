@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2, HostListener } from '@angular/core';
 import { AddSvgIconService } from '@app/core/service-front/add-svg-icon.service';
 import * as THREE from 'three';
 import { Router } from '@angular/router';
@@ -23,6 +23,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
   raycaster = new THREE.Raycaster();
   diamondHover: string;
   objects = [];
+
+  // @HostListener('click', ['"hello!"', '$event']) onMouseEnter(greeting: string, event: any) {
+  //   console.log(greeting);
+  //   console.log(event.target.id);
+  // }
+
+  @HostListener('click', ['$event']) listenMouseClick(event: any) {
+    this.onMouseClick(event);
+  }
+  @HostListener('mousemove', ['$event']) listenMouseMove(event: any) {
+    this.onMouseMove(event);
+  }
+  @HostListener('window:resize', ['$event']) listenWindowResize(event: any) {
+    this.onWindowResize();
+  }
 
   constructor(
     private addSvgIconService: AddSvgIconService,
@@ -65,9 +80,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.setDiamondNavWord();
 
     // 5.監聽滑鼠移動事件
-    window.addEventListener('click', (event) => this.onMouseClick(event), false);
-    window.addEventListener('resize', () => this.onWindowResize(), false);
-    window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
+    // window.addEventListener('click', (event) => this.onMouseClick(event), false);
+    // window.addEventListener('mousemove', (event) => this.onMouseMove(event), false);
+    // window.addEventListener('resize', () => this.onWindowResize(), false);
     this.animate3();
   }
 
