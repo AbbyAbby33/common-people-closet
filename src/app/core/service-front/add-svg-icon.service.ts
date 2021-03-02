@@ -16,7 +16,7 @@ export class AddSvgIconService {
   addSvgIcon(svgName: string) {
     this.matIconRegistry.addSvgIcon(
       svgName,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`../assets/images/icon/${svgName}.svg`)
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`./assets/images/icon/${svgName}.svg`)
     );
   }
 
