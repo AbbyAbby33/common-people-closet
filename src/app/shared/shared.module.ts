@@ -7,6 +7,7 @@ import { PageTitleModule } from './component/page-title/page-title.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { LoadingPageModule } from './component/loading-page/loading-page.module';
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatTableModule,
     MatPaginatorModule,
     MatCheckboxModule,
+    LoadingPageModule,
   ],
   exports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatTableModule,
     MatPaginatorModule,
     MatCheckboxModule,
+    LoadingPageModule,
   ],
 })
 export class SharedModule { }
