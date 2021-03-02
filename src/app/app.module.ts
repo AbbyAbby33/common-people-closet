@@ -5,9 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from '@shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { NavBarModule } from '@core/component/nav-bar/nav-bar.module';
 import { HomeModule } from '@layout/home/home.module';
-import { FaceOperateGuideModule } from '@core/component/face-operate-guide/face-operate-guide.module';
+import { CoreModule } from '@core/core.module';
 
 @NgModule({
   declarations: [
@@ -18,10 +17,9 @@ import { FaceOperateGuideModule } from '@core/component/face-operate-guide/face-
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    NavBarModule,
     BrowserAnimationsModule,
     HomeModule,
-    FaceOperateGuideModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [
