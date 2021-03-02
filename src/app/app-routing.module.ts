@@ -25,8 +25,13 @@ const routes: Routes = [
   },
   {
     // 衣物故事
-    path: 'cloth-story', // child route path
+    path: 'cloth-story',
     loadChildren: () => import('./layout/cloth-story/cloth-story.module').then(m => m.ClothStoryModule),
+  },
+  {
+    // 網頁資訊
+    path: 'web-info',
+    loadChildren: () => import('./layout/web-info/web-info.module').then(m => m.WebInfoModule),
   },
   {
     // 首頁

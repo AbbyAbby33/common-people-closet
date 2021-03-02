@@ -1,0 +1,13 @@
+@import "../../../../assets/style/_var.scss";
+
+a.web-info-wrap {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  mat-icon {
+    display: inline-block;
+    font-size: 28px;
+    color: $color_word_two;
+  }
+}

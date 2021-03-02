@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FaceOperateGuideModule } from '@core/component/face-operate-guide/face-operate-guide.module';
 import { NavBarModule } from '@core/component/nav-bar/nav-bar.module';
-import { WebInfoModule } from '@core/component/web-info/web-info.module';
+import { WebInfoBtnModule } from '@core/component/web-info-btn/web-info-btn.module';
 
 @NgModule({
   declarations: [
@@ -9,12 +9,12 @@ import { WebInfoModule } from '@core/component/web-info/web-info.module';
   imports: [
     FaceOperateGuideModule,
     NavBarModule,
-    WebInfoModule,
+    WebInfoBtnModule,
   ],
   exports: [
     FaceOperateGuideModule,
     NavBarModule,
-    WebInfoModule,
+    WebInfoBtnModule,
   ]
 })
 export class CoreModule { }

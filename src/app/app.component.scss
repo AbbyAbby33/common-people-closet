@@ -4,9 +4,15 @@
   // position: relative;
   .cpc-face-operate-guide {
     position: fixed;
-    bottom: $spacing_between_item_and_page;
     left: $spacing_between_item_and_page;
+    bottom: $spacing_between_item_and_page;
     margin-right: $spacing_between_item_and_page;
     z-index: 100;
+  }
+  .cpc-web-inf-btn {
+    position: fixed;
+    right: $spacing_between_item_and_page;
+    bottom: 20px;
+    z-index: 110;
   }
 }
