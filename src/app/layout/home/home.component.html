@@ -1,5 +1,7 @@
 <section class="home-wrap">
-  <div class="three-js-wrap" #threeJsWrap></div>
+  <div class="three-js-wrap" #threeJsWrap>
+    <cpc-loading-page *ngIf="loading"></cpc-loading-page>
+  </div>
   <div class="face-wrap">
     <mat-icon class="face-home" svgIcon="face_home_no_mouth"></mat-icon>
     <!-- 左眼 -->
@@ -22,4 +24,3 @@
   </div>
 </section>
 
-<!-- <cpc-loading-page></cpc-loading-page> -->
