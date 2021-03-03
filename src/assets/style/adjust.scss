@@ -25,7 +25,8 @@ body {
         text-align: center;
       }
     }
-    tr.mat-row, tr.mat-footer-row {
+    tr.mat-row,
+    tr.mat-footer-row {
       height: auto;
       line-height: 45px;
     }
@@ -47,6 +48,17 @@ body {
     }
     .mat-select-arrow {
       color: $color_word_one;
+    }
+  }
+
+  /** spinner */ // TODO:
+  .mat-progress-spinner {
+    width: 26px !important;
+    height: 26px !important;
+    display: inline-block;
+    svg {
+      width: 26px !important;
+      height: 26px !important;
     }
   }
 }
