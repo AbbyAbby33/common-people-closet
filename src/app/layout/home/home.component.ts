@@ -24,19 +24,27 @@ export class HomeComponent implements OnInit, AfterViewInit {
   diamondHover: string;
   objects = [];
 
+  loading = false;
+
   // @HostListener('click', ['"hello!"', '$event']) onMouseEnter(greeting: string, event: any) {
   //   console.log(greeting);
   //   console.log(event.target.id);
   // }
 
   @HostListener('click', ['$event']) listenMouseClick(event: any) {
-    this.onMouseClick(event);
+    if (!this.loading) {
+      this.onMouseClick(event);
+    }
   }
   @HostListener('mousemove', ['$event']) listenMouseMove(event: any) {
-    this.onMouseMove(event);
+    if (!this.loading) {
+      this.onMouseMove(event);
+    }
   }
   @HostListener('window:resize', ['$event']) listenWindowResize(event: any) {
-    this.onWindowResize();
+    if (!this.loading) {
+      this.onWindowResize();
+    }
   }
 
   constructor(
@@ -47,10 +55,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.addSvgIcon();
+    this.loading = true;
   }
 
   ngAfterViewInit(): void {
     this.initView();
+    setTimeout(() => {
+      this.loading = false;
+    }, 10000);
   }
 
   /** 加入svg */

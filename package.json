@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "node --max_old_space_size=8192 --harmony node_modules/@angular/cli/bin/ng lint",
     "e2e": "ng e2e"
   },
   "private": true,
