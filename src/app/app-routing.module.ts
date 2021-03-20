@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from '@layout/home/home.component';
 
 const routes: Routes = [
   {
@@ -36,12 +35,13 @@ const routes: Routes = [
   {
     // 首頁
     path: '',
-    component: HomeComponent,
+    loadChildren: () => import('./layout/home/home.module').then(m => m.HomeModule),
   },
   {
     // 暫時404頁面也都導回首頁
     path: '**',
-    loadChildren: () => import('./layout/home/home.module').then(m => m.HomeModule),
+    redirectTo: '',
+    pathMatch: 'full'
   },
 ];
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 import { HomeComponent } from './home.component';
 import { FaceOperateGuideModule } from '@core/component/face-operate-guide/face-operate-guide.module';
+import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { FaceOperateGuideModule } from '@core/component/face-operate-guide/face-
   ],
   imports: [
     SharedModule,
-    FaceOperateGuideModule
+    FaceOperateGuideModule,
+    HomeRoutingModule,
   ],
   providers: [
   ]
