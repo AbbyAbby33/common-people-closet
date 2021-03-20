@@ -60,9 +60,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initView();
-    setTimeout(() => {
-      this.loading = false;
-    }, 10000);
+    // setTimeout(() => {
+    //   this.loading = false;
+    // }, 10000);
+    this.loading = false;
   }
 
   /** 加入svg */
