@@ -59,6 +59,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initView();
+    setTimeout(() => {
+      this.loading = false;
+    }, 9000);
   }
 
   /** 加入svg */
@@ -339,9 +342,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     this.renderer.render(this.scene, this.camera);
-    setTimeout(() => {
-      this.loading = false;
-    });
   }
 
   /** 滑鼠移動 */
