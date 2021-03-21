@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   diamondHover: string;
   objects = [];
 
-  loading = false;
+  loading = true;
 
   // @HostListener('click', ['"hello!"', '$event']) onMouseEnter(greeting: string, event: any) {
   //   console.log(greeting);
@@ -55,15 +55,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.addSvgIcon();
-    this.loading = true;
   }
 
   ngAfterViewInit(): void {
     this.initView();
-    // setTimeout(() => {
-    //   this.loading = false;
-    // }, 10000);
-    this.loading = false;
   }
 
   /** 加入svg */
@@ -344,6 +339,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     this.renderer.render(this.scene, this.camera);
+    setTimeout(() => {
+      this.loading = false;
+    });
   }
 
   /** 滑鼠移動 */
