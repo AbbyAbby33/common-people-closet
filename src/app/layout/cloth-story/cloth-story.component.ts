@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClothInfoApiService } from '@core/service-api/cloth-info-api.service';
 import { ActivatedRoute } from '@angular/router';
+import { UserOperateInfoService } from '@app/core/service-front/user-operate-info.service';
 
 @Component({
   selector: 'cpc-cloth-story',
@@ -16,9 +17,11 @@ export class ClothStoryComponent implements OnInit {
   constructor(
     private clothInfoApiService: ClothInfoApiService,
     private activatedRoute: ActivatedRoute,
+    private userOperateInfoService: UserOperateInfoService,
   ) { }
 
   ngOnInit(): void {
+    this.userOperateInfoService.changePage('cloth-story');
     this.clothId = this.activatedRoute.snapshot.queryParams['id'];
     console.log('this.clothId', this.clothId);
     this.getClothInfoById(this.clothId);

@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClothInfoApiService } from '@core/service-api/cloth-info-api.service';
+import { UserOperateInfoService } from '@app/core/service-front/user-operate-info.service';
 
 @Component({
   selector: 'cpc-all-story',
@@ -26,9 +27,11 @@ export class AllStoryComponent implements OnInit, AfterViewInit {
 
   constructor(
     private clothInfoApiService: ClothInfoApiService,
+    private userOperateInfoService: UserOperateInfoService,
   ) { }
 
   ngOnInit(): void {
+    this.userOperateInfoService.changePage('all-story');
   }
 
   ngAfterViewInit() {
@@ -41,7 +44,7 @@ export class AllStoryComponent implements OnInit, AfterViewInit {
     // this.dataSource.paginator = this.paginator;
     this.dataSource.data = this.clothInfoApiService.getAllClothInfo();
     this.length = this.clothInfoApiService.getAllClothInfo().length;
-    console.log('this.dataSource', this.dataSource);
+    // console.log('this.dataSource', this.dataSource);
     this.getClothListThisPage(this.pageIndex);
     this.countPageNumList(this.length);
   }

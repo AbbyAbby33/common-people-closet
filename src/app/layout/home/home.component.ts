@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2, Hos
 import { AddSvgIconService } from '@app/core/service-front/add-svg-icon.service';
 import * as THREE from 'three';
 import { Router } from '@angular/router';
+import { UserOperateInfoService } from '@app/core/service-front/user-operate-info.service';
 
 @Component({
   selector: 'cpc-home',
@@ -51,10 +52,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private addSvgIconService: AddSvgIconService,
     private renderer2: Renderer2,
     private router: Router,
+    private userOperateInfoService: UserOperateInfoService,
   ) { }
 
   ngOnInit(): void {
     this.addSvgIcon();
+    this.userOperateInfoService.changePage('home');
   }
 
   ngAfterViewInit(): void {

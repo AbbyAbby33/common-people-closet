@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserOperateInfoService } from '@app/core/service-front/user-operate-info.service';
 
 @Component({
   selector: 'cpc-share-yours',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShareYoursComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userOperateInfoService: UserOperateInfoService,
+  ) { }
 
   ngOnInit(): void {
+    this.userOperateInfoService.changePage('share-yours');
   }
 
 }

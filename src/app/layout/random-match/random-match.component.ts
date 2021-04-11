@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2, HostListener } from '@angular/core';
 import * as THREE from 'three';
+import { UserOperateInfoService } from '@app/core/service-front/user-operate-info.service';
 
 @Component({
   selector: 'cpc-random-match',
@@ -31,9 +32,11 @@ export class RandomMatchComponent implements OnInit, AfterViewInit {
 
   constructor(
     private renderer2: Renderer2,
+    private userOperateInfoService: UserOperateInfoService,
   ) { }
 
   ngOnInit(): void {
+    this.userOperateInfoService.changePage('random-match');
   }
 
   ngAfterViewInit(): void {
