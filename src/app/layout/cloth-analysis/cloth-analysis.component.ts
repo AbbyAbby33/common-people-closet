@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClothInfoApiService } from '@core/service-api/cloth-info-api.service';
+import { UserOperateInfoService } from '@app/core/service-front/user-operate-info.service';
 
 @Component({
   selector: 'cpc-cloth-analysis',
@@ -21,9 +22,11 @@ export class ClothAnalysisComponent implements OnInit, AfterViewInit {
 
   constructor(
     private clothInfoApiService: ClothInfoApiService,
+    private userOperateInfoService: UserOperateInfoService,
   ) { }
 
   ngOnInit(): void {
+    this.userOperateInfoService.changePage('cloth-analysis');
   }
 
   ngAfterViewInit() {

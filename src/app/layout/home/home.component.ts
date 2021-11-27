@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2, Hos
 import { AddSvgIconService } from '@app/core/service-front/add-svg-icon.service';
 import * as THREE from 'three';
 import { Router } from '@angular/router';
+import { UserOperateInfoService } from '@app/core/service-front/user-operate-info.service';
 
 @Component({
   selector: 'cpc-home',
@@ -51,10 +52,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private addSvgIconService: AddSvgIconService,
     private renderer2: Renderer2,
     private router: Router,
+    private userOperateInfoService: UserOperateInfoService,
   ) { }
 
   ngOnInit(): void {
     this.addSvgIcon();
+    this.userOperateInfoService.changePage('home');
   }
 
   ngAfterViewInit(): void {
@@ -295,25 +298,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
     // calculate objects intersecting the picking ray
     const intersects = this.raycaster.intersectObjects(this.objects, true);
     // console.log('this.objects', this.objects);
-    console.log('intersects', intersects);
+    // console.log('intersects', intersects);
 
     if (intersects[0]) {
       const selectedName = intersects[0].object.name;
       switch (selectedName) {
         case 'all-story':
-          console.log('/all-story');
+          // console.log('/all-story');
           this.router.navigate(['/all-story']);
           break;
         case 'cloth-analysis':
-          console.log('/cloth-analysis');
+          // console.log('/cloth-analysis');
           this.router.navigate(['/cloth-analysis']);
           break;
         case 'random-match':
-          console.log('random-match');
+          // console.log('random-match');
           this.router.navigate(['/random-match']);
           break;
         case 'share-yours':
-          console.log('share-yours');
+          // console.log('share-yours');
           this.router.navigate(['/share-yours']);
           break;
       }
