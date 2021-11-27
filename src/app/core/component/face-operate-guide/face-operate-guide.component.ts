@@ -29,8 +29,8 @@ export class FaceOperateGuideComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.initGuide();
     this.subscribeUserAtWhichPage();
-    // this.operateGuide();
   }
 
   /** 加入svg */
@@ -45,7 +45,7 @@ export class FaceOperateGuideComponent implements OnInit, AfterViewInit {
 
     const observer = {
       next: pageValue => {
-        // console.log('-----------------------------------------現在在哪裡:', pageValue);
+        console.log('-----------------------------------------現在在哪裡:', pageValue);
         this.operateGuide(pageValue);
       },
       error: err => console.error('Observer got an error: ' + err),
@@ -53,6 +53,17 @@ export class FaceOperateGuideComponent implements OnInit, AfterViewInit {
     };
 
     this.userOperateInfoService.pageNow.subscribe(observer);
+  }
+
+  /** 打字Typerwriter */
+  initGuide() {
+    this.writer = new Typewriter(this.operateGuideWord.nativeElement, {
+      loop: true,
+      // loop: false,
+      typeSpeed: 100,
+      // typeSpeed: 20,
+      // typeColor: 'blue',
+    });
   }
 
   /** 操作引導 */
@@ -65,10 +76,8 @@ export class FaceOperateGuideComponent implements OnInit, AfterViewInit {
   // 網頁資訊'web-info'
   operateGuide(pageValue: string) {
     /** 抓取DOM */
-    // let operateGuideWordDom = this.operateGuideWord.nativeElement;
-    // console.log(operateGuideWordDom);
-    // console.log('this.writer', this.writer);
-    // console.log('this.operateGuideWord', this.operateGuideWord);
+    let operateGuideWordDom = this.operateGuideWord;
+    console.log(operateGuideWordDom, '2021');
 
     /** 打字文字 */
     let typeWord;
@@ -91,27 +100,20 @@ export class FaceOperateGuideComponent implements OnInit, AfterViewInit {
       case 'cloth-story':
         typeWord = '衣物故事使用技術：路由帶入參數，模組化元件';
         break;
-      default:
-        typeWord = '你好！我是前端工程師陳怡靜！';
+      // default:
+      //   typeWord = '你好！我是前端工程師陳怡靜！';
     }
 
-    /** 打字Typerwriter */
-    if (!this.writer) {
-      this.writer = new Typewriter(this.operateGuideWord.nativeElement, {
-        loop: true,
-        typeSpeed: 100,
-        // typeSpeed: 20,
-        // typeColor: 'blue',
-      });
-    } else {
-      this.writer.queueClearText();
-      // this.writer.clear();
-      // this.operateGuideWord.nativeElement.remove();
+    if (typeWord) {
+      this.writer
+        .clear()
+        .type(typeWord)
+        .rest(1000)
+        .start();
+      // console.log('this.writer:', this.writer);
+      /** 移除先前的 */
+      this.writer.queue = this.writer.queue.slice(this.writer.queue.length - 2);
     }
 
-    this.writer
-      .type(typeWord)
-      .rest(1000)
-      .start();
   }
 }
